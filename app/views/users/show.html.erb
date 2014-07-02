@@ -1,3 +1,9 @@
 <h1>This is your user homepage!</h1>
 
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+
+
+<% if current_user.landlord %>
+	<%= "You are a landlord!" %>
+
+<% end %>	
