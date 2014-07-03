@@ -1,1 +1,11 @@
-<h1> this is the users page </h1>
+<h1> All current users</h1>
+
+
+<ul>
+	<% @users.each do |u| %>
+		<li>
+			<%= u.name %> 
+		</li>
+	<% end %>
+
+</ul>

@@ -8,8 +8,10 @@
 <% if current_user.landlord %>
 	<%= "Welcome landlord!" %>
 	<%= link_to 'Add Apartment', new_apartment_path %>
-	<%= link_to 'See my apartments', apartment_path %>
+	<%= link_to 'See My Apartments', apartment_path %>
 
 <% else %>
 	<%= link_to "Find Apartments", apartments_path%>
+	<%= link_to "Find Roommates", users_path%>
+
 <% end %>	
