@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
 
 	has_many :messages
 
+	
 
+	def self.filter(query)
+    	query.blank? ? User.all : User.where("name LIKE '%#{query}%' OR email LIKE '%#{query}%'")
+	end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
