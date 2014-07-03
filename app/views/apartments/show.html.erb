@@ -1,9 +1,12 @@
+<h1>My appartments</h1>
+
 <ul>
-
 	<% @apartments.each do |a| %>
-
-		<li><%= a.name %></li>
-		
+		<% if a.user_id == current_user.id %>
+			<li>
+				<%= a.name %> <%= a.user_id %>
+			</li>
+		<% end %>
 	<% end %>
 
 </ul>

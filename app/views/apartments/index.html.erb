@@ -1,7 +1,10 @@
 <h1> These are apartment listings </h1>
 
+<ul>
+	<% @apartments.each do |a| %>
+		<li>
+			<%= a.name %> <%= a.user_id %>
+		</li>
+	<% end %>
 
-
-
-
-
+</ul>

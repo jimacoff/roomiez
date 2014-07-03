@@ -3,11 +3,13 @@
 
 
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-<%= link_to "Find Apartments", apartments_path%>
 
 
 <% if current_user.landlord %>
 	<%= "Welcome landlord!" %>
-	<%= link_to 'Add Apartment bru?', new_apartment_path %>
+	<%= link_to 'Add Apartment', new_apartment_path %>
+	<%= link_to 'See my apartments', apartment_path %>
 
+<% else %>
+	<%= link_to "Find Apartments", apartments_path%>
 <% end %>	
