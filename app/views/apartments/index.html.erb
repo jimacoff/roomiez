@@ -1,0 +1,9 @@
+<h1> These are apartment listings </h1>
+
+<%= form_tag apartments_path, :method => 'GET' do %>
+	<%= text_field_tag 'query' params[:query] %>
+	<%= submit_tag 'SEARCH'%>
+
+
+
+

@@ -1,6 +1,9 @@
-<h1>This is your user homepage!</h1>
+<h1>Welcome! </h1>
+
+
 
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+<%= link_to "Find Apartments", apartments_path(:index)%>
 
 
 <% if current_user.landlord %>

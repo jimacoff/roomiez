@@ -1,3 +1,69 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+p.alert {
+	padding: 0 0px;
+	margin-bottom: 0px;
+}
+
+div.navbar {
+	margin-bottom: 0;
+
+}
+
+.navbar {
+	background-color: white;
+	opacity:50%;
+}
+
+ul {
+	list-style: none;
+	width: 100%;
+
+}
+
+li {
+
+	display: inline;
+	padding-top: 2%;
+	padding-bottom:2%;
+	padding-left : 5%;
+	padding-right: 5%;
+	margin-bottom: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+li:hover{
+	background-color:#CADAA5;
+	color:white;
+}
+
+
+.carousel .item {
+  height: 500px;
+}
+.carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+.carousel-caption {
+	top: 30%;
+	font-family: 'Lato', sans-serif;
+	font-size: 3em;
+	
+	}
+
+h1 {
+	font-family: 'Lato', sans-serif;
+	font-size: 1.3em;
+	color: gray;
+	font-style:italic;
+
+}
+
+
+ 
