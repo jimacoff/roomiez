@@ -4,7 +4,11 @@
 	<% @apartments.each do |a| %>
 		<% if a.user_id == current_user.id %>
 			<li>
+				<%= image_tag @apartment.photo.url(:thumb) %>
 				<%= a.name %> <%= a.user_id %>
+				<%= link_to 'Edit', edit_apartment_path %>
+				<%= link_to 'Delete', a, method: :destroy, data: {confirm: 'Are you sure?'} %>
+
 			</li>
 		<% end %>
 	<% end %>

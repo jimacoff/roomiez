@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'users/show'
 
   devise_for :users
-  resources :users
+  resources :users do
+    resources :apartments, :only => :index
+  end
+  
+  resources :apartments
 
   root 'welcome#home'
 
@@ -28,7 +32,6 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :apartments
 
   # Example resource route with options:
   #   resources :products do

@@ -1,8 +1,13 @@
 class ApartmentsController < ApplicationController
+	before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@apartments = Apartment.all
-		# @apartments = Apartment.filter(params[:q])	
+		# @apartments = Apartment.all
+		if params[:user_id]
+			@apartments = Apartment.where(:user_id => params[:user_id]).paginate(:per_page =>10, :page => params[:page])
+		else
+			@apartments = Apartment.paginate(:per_page =>10, :page => params[:page])	
+		end
 	end
 
 	def new
@@ -14,39 +19,60 @@ class ApartmentsController < ApplicationController
 		@apartment.user_id = current_user.id
 
 		if @apartment.save
-			redirect_to ""
+			redirect_to "/apartments/#{current_user.id}"
 		else
       		render :new
     	end
 	end
 
-	# def edit
-	# end
+	def edit
+		# @apartment = Apartment.edit
+		if @apartment.save
+			redirect_to "/apartments/#{current_user.id}"
+		else
+      		render :new
+    	end
+	end
 
 	def update
 		# @apartment = Apartment.edit
 
 		respond_to do |format|
 	  		if @apartment.update(apartment_params)
-	    		format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
-	    		format.json { render :show, status: :ok, location: @apartment }
+	    		redirect_to "/apartments/#{current_user.id}", notice: 'Apartment was successfully updated.'
 	  		else
-	    		format.html { render :edit }
-	    		format.json { render json: @apartment.errors, status: :unprocessable_entity }
+	    		render :edit
 	  		end
 		end
 	end
 
 
 	def show
+		#@apartment = Apartment.find(params[:id])
+
+		
 		@apartments = Apartment.all
 
 	end
 
+	def destroy
+		@apartment.destroy
+		redirect_to "/apartments/#{current_user.id}"
+
+		
+	end
+
+
+
 	private
 
+
+	def set_apartment
+      @apartment = Apartment.find(params[:id])
+    end
+
 	def apartment_params
-      params.require(:apartment).permit(:name, :street_address, :occupied, :country, :zipcode, :user_id)
+      params.require(:apartment).permit(:name, :street_address, :occupied, :country, :zipcode, :user_id, :photo)
     end
 
 end
