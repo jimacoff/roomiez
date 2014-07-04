@@ -14,7 +14,7 @@ class ApartmentsController < ApplicationController
 		@apartment.user_id = current_user.id
 
 		if @apartment.save
-			redirect_to apartments_path
+			redirect_to ""
 		else
       		render :new
     	end

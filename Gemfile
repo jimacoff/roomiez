@@ -1,5 +1,15 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate'
+gem 'paperclip'
+
+group :development do
+  # gem 'jazz_hands'
+  gem 'better_errors'
+  gem 'quiet_assets'
+  gem 'puma'
+end
+
 
 gem 'pry'
 gem 'bootstrap-sass' 
