@@ -1,41 +1,105 @@
 <h1> All current users</h1>
 
-<%= form_tag users_path, :method => 'GET' do %>
-	<%= text_field_tag 'q', params[:q] %>
-	<%= submit_tag 'SEARCH' %>
-<% end %><br>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#tenant" role="tab" data-toggle="tab">Tenants</a></li>
+  <li><a href="#landlord" role="tab" data-toggle="tab">Landlords</a></li>
 
-<ul>
-	<% @users.each do |u| %> 
-	<li>
-		<%= link_to u.name, "user/#{u.id}" %>
-		<!-- </li><br> -->
-		<!-- Button trigger modal -->
-		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
-		View <%= u.name %> profile
-		</button>
-	</li>
-	<br>
-	<!-- Modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> Profile</strong> </h3>
-				</div>
-				<div class="modal-body">
-					<h4> Email : <%= u.email %> </h4>
-					<h4> Age : <%= u.age %> </h4>
-					<h4> About : <%= u.about %> </h4>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Add rommie!</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<% end %>
 </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="tenant">
+  	
+  	<br>
+	<%= form_tag users_path, :method => 'GET' do %>
+		<%= text_field_tag 'q', params[:q] %>
+		<%= submit_tag 'SEARCH' %>
+	<% end %><br>
+
+		<ul>
+			<% @users.each do |u| %> 
+				<% if u.landlord == false %>
+					<li>
+						<%= link_to u.name, "user/#{u.id}" %>
+						<!-- Button trigger modal -->
+						<button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
+						View <%= u.name %> profile
+						</button>
+					</li>
+					<br>
+					<!-- Modal -->
+					<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+									<h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> Profile</strong> </h3>
+								</div>
+								<div class="modal-body">
+									<h4> Email : <%= u.email %> </h4>
+									<h4> Age : <%= u.age %> </h4>
+									<h4> About : <%= u.about %> </h4>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Add tenant!</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		</ul>
+
+  </div>
+
+
+  <div class="tab-pane" id="landlord">
+
+  	<br>
+	<%= form_tag users_path, :method => 'GET' do %>
+		<%= text_field_tag 'q', params[:q] %>
+		<%= submit_tag 'SEARCH' %>
+	<% end %><br>
+
+		<ul>
+			<% @users.each do |u| %> 
+				<% if u.landlord == true %>
+					<li>
+						<%= link_to u.name, "user/#{u.id}" %>
+						<!-- Button trigger modal -->
+						<button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
+						View <%= u.name %> profile
+						</button>
+					</li>
+					<br>
+					<!-- Modal -->
+					<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+									<h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> Profile</strong> </h3>
+								</div>
+								<div class="modal-body">
+									<h4> Email : <%= u.email %> </h4>
+									<h4> Age : <%= u.age %> </h4>
+									<h4> About : <%= u.about %> </h4>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Add landlord!</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		</ul>
+
+  </div>
+</div>
+
+<%= link_to "Home", user_path(current_user) %>
+

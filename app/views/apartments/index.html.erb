@@ -1,9 +1,9 @@
-<h1> All Apartments :  </h1>
+<h1> Apartments:  </h1>
 
 <ul>
 	<% @apartments.each do |a| %>
 		<li>
-			<%= a.name %> <%= a.user_id %> 
+			<%= link_to a.name, user_apartment_path(current_user, a) %> 
 			<% if a.photo_file_name %>
 				<%= image_tag a.photo.url(:thumb) %>
 			<% end %>
@@ -14,3 +14,6 @@
 <% end %>
 
 <%= will_paginate @posts %>
+
+
+<%= link_to "Home", user_path(current_user) %>

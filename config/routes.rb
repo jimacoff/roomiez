@@ -4,16 +4,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users do
-    resources :apartments, :only => :index
+    resources :apartments, :only => [:index, :show, :edit]
   end
+
   
   resources :apartments
 
   root 'welcome#home'
-
-  # match '/home' => 'pages#home'
-  # match '/about' => 'pages#about'
-  # match '/contact' => 'pages#contact'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

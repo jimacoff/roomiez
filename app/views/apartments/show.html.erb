@@ -1,16 +1,23 @@
-<h1>My Apartments</h1>
+<h1> <%= @apartment.name %> </h1>
 
-<ul>
-	<% @apartments.each do |a| %>
-		<% if a.user_id == current_user.id %>
-			<li>
-				<%= image_tag @apartment.photo.url(:thumb) %>
-				<%= a.name %> <%= a.user_id %>
-				<%= link_to 'Edit', edit_apartment_path %>
-				<%= link_to 'Delete', a, method: :destroy, data: {confirm: 'Are you sure?'} %>
 
-			</li>
+
+<div>
+	<%= image_tag @apartment.photo.url(:medium) %>	
+</div>
+
+<div>
+	<ul>
+		<li><%= @apartment.street_address %></li>
+		<li><%= @apartment.country %></li>
+		<li><%= @apartment.zipcode %></li>
+		<li><% if @apartment.occupied %>
+			The apartment is currently occupied
+		<% else %>
+			The apartment is currently available
 		<% end %>
-	<% end %>
+		</li>
+	</ul>
+</div>
 
-</ul>
+<%= link_to 'Back', user_apartments_path(current_user) %>
