@@ -2,44 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*******************ALL PAGES*************************/
+ul {
+	list-style:none;
+}
+
 p.alert {
 	padding: 0 0px;
 	margin-bottom: 0px;
 }
 
-div.navbar {
-	margin-bottom: 0;
-
+p.notice {
+	padding: 0 0px;
+	margin-bottom: 0px;
 }
 
-.navbar {
-	background-color: white;
-	opacity:50%;
-}
+/*******************WELCOME PAGE NAVBAR*************************/
 
-nav ul {
+
+
+.navbar-header li {
 	list-style: none;
-	width: 100%;
+}
+
+.navbar-brand {
+	height: 70px;
+	width: 200px; 
 
 }
 
-nav li {
-
-	display: inline;
-	padding-top: 2%;
-	padding-bottom:2%;
-	padding-left : 5%;
-	padding-right: 5%;
-	margin-bottom: 0;
-	font-family: 'Lato', sans-serif;
-}
-
-li:hover{
-	background-color:#CADAA5;
-	color:white;
+.navbar-nav > li:hover {
+	background-color: #bfea66;
 }
 
 
+/******************* BODY *************************/
+
+body {
+	position: relative;
+}
+
+
+
+
+/**************** WELCOME - CAROUSEL ****************************/
 .carousel .item {
   height: 500px;
 }
@@ -57,11 +63,99 @@ li:hover{
 	
 	}
 
+/******************* WELCOME - ABOUT SECTION *************************/
+
+#black_text {
+	color:black;
+}
+
 h1 {
 	font-family: 'Lato', sans-serif;
 	font-size: 1.3em;
 	color: gray;
-	font-style:italic;
+
+}
+
+p {
+	line-height: 55px;
+	padding-left: 10%;
+	padding-right:10%;
+	padding-top: 1%;
+	font-family: 'Lato', sans-serif;
+	font-size: 2em;
+	color: gray;
+	text-align:center;
+
+}
+
+
+
+/******************* WELCOME - FOUNDERS SECTION *************************/
+
+#thefounders {
+			background-image: url("/assets/sky.jpg");
+
+}
+
+#green_text {
+	color: #B2C248;
+}
+
+#sabrapic {
+
+
+	float:left;
+	height:170px;
+	width:150px;
+	border-radius:100%;
+}
+
+#sabraprofile {
+
+	float:left;
+	width:50%;
+}
+
+#germanprofile {
+	float:right;
+	width:50%;
+}
+
+
+/******************* SIGN IN / SIGN UP / EDIT *************************/
+
+
+#form_style input {
+width:30%;
+  border-radius: 7px;
+}
+
+#submitbutton input {
+background-color: #FFCC02;
+width: 150px;
+border-radius: 20px;
+}
+
+#submitbutton input:hover {
+background-color: #ccc;
+}
+
+
+#signinpage {
+	background-color: #B2C248;
+	margin-top: 1%;
+	font-family: 'Lato', sans-serif;
+
+}
+
+.border-form-div {
+  max-width: 60%;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border-radius: 50px;
+  
+  box-shadow: 0 10px 10px rgba(0,0,0,.05);
 
 }
 

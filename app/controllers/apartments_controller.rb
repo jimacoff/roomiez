@@ -19,7 +19,7 @@ class ApartmentsController < ApplicationController
 		@apartment.user_id = current_user.id
 
 		if @apartment.save
-			redirect_to "/apartments/#{current_user.id}"
+			redirect_to "/users/#{current_user.id}/apartments"
 		else
       		render :new
     	end
@@ -28,7 +28,7 @@ class ApartmentsController < ApplicationController
 	def edit
 		# @apartment = Apartment.edit
 		if @apartment.save
-			redirect_to "/apartments/#{current_user.id}"
+			redirect_to "/users/#{current_user.id}/apartments"
 		else
       		render :new
     	end
@@ -39,7 +39,7 @@ class ApartmentsController < ApplicationController
 
 		respond_to do |format|
 	  		if @apartment.update(apartment_params)
-	    		redirect_to "/apartments/#{current_user.id}", notice: 'Apartment was successfully updated.'
+	    		redirect_to "/users/#{current_user.id}/apartments", notice: 'Apartment was successfully updated.'
 	  		else
 	    		render :edit
 	  		end
@@ -57,7 +57,7 @@ class ApartmentsController < ApplicationController
 
 	def destroy
 		@apartment.destroy
-		redirect_to "/apartments/#{current_user.id}"
+		redirect_to "/users/#{current_user.id}/apartments"
 
 		
 	end

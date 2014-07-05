@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-
+<div id="form_style">
   <%= f.label :name %><br/>
   <%= f.text_field :name %>
 
@@ -29,21 +29,21 @@
 
   <%= f.label :country %><br/>
   <%= f.text_field :country %>
-
+<div>
   <br/><br/>
-  
+
   <%= f.label :occupied, "Please check box if the apartment is occupied: " %>
   <%= f.check_box :occupied %> 
 
   <br/><br/>
   
   <div class="field">
-    <%= f.label "Upload a Photo" %><br/>
-    <%= f.file_field :photo %>
+    <%= f.label "Upload a Photo : " %><br/>
+    <%= f.file_field :photo %> <br/>
   </div>
 
 
-  <div class="actions">
+  <div class="actions" id="submitbutton">
     <%= f.submit %>
   </div>
 <% end %>
