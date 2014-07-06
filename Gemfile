@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'will_paginate'
 gem 'paperclip'
+gem 'binding_of_caller'
 
 group :development do
   # gem 'jazz_hands'

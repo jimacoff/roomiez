@@ -26,31 +26,20 @@ class ApartmentsController < ApplicationController
 	end
 
 	def edit
-		# @apartment = Apartment.edit
-		if @apartment.save
-			redirect_to "/users/#{current_user.id}/apartments"
-		else
-      		render :new
-    	end
 	end
 
 	def update
 		# @apartment = Apartment.edit
-
-		respond_to do |format|
-	  		if @apartment.update(apartment_params)
-	    		redirect_to "/users/#{current_user.id}/apartments", notice: 'Apartment was successfully updated.'
-	  		else
-	    		render :edit
-	  		end
-		end
+  		if @apartment.update(apartment_params)
+    		redirect_to "/users/#{current_user.id}/apartments", notice: 'Apartment was successfully updated.'
+  		else
+    		render :edit
+  		end
 	end
 
 
 	def show
 		#@apartment = Apartment.find(params[:id])
-
-		
 		@apartments = Apartment.all
 
 	end
@@ -58,8 +47,6 @@ class ApartmentsController < ApplicationController
 	def destroy
 		@apartment.destroy
 		redirect_to "/users/#{current_user.id}/apartments"
-
-		
 	end
 
 

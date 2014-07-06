@@ -1,4 +1,6 @@
 <h1> <%= @apartment.name %> </h1>
+<%= link_to "Edit", edit_user_apartment_path(current_user, @apartment) %> 
+<%= link_to "Delete", "/users/#{current_user.id}/apartments/#{@apartment.id}", method: 'delete' %> 
 
 
 

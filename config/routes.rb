@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users do
-    resources :apartments, :only => [:index, :show, :edit]
+    resources :apartments, :only => [:index, :show, :edit, :destroy]
+    resources :memberships, :only => [:index]
   end
 
-  
-  resources :apartments
+
+  resources :apartments, :circles
+
 
   root 'welcome#home'
 
