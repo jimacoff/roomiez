@@ -17,16 +17,18 @@
 		<%= submit_tag 'SEARCH' %>
 	<% end %><br>
 
-		<ul>
+		<table>
 			<% @users.each do |u| %> 
 				<% if u.landlord == false %>
-					<li>
-						<%= link_to u.name, "user/#{u.id}" %>
+					<tr>
+						<td><%= link_to u.name, "user/#{u.id}" %></td>
 						<!-- Button trigger modal -->
-						<button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
-						View <%= u.name %> profile
-						</button>
-					</li>
+						<td
+              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
+  						View <%= u.name %> profile
+  						</button>
+            </td>
+					</tr>
 					<br>
 					<!-- Modal -->
 					<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
@@ -43,14 +45,15 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<%= link_to "Add hommie!", new_user_circle(u.id) %>
+									<%= link_to "Add #{u.name} to your circle!", "/users/:user_id/circles/add?user_to_add=#{u}&join_other_circle=false" %>
+									<%= link_to "Join #{u.name}'s circle", "/users/:user_id/circles/add?user_to_add=#{u}&join_other_circle=true" %>
 								</div>
 							</div>
 						</div>
 					</div>
 				<% end %>
 			<% end %>
-		</ul>
+		</table>
 
   </div>
 

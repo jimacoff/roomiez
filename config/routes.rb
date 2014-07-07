@@ -6,14 +6,16 @@ Rails.application.routes.draw do
   resources :users do
     resources :apartments, :only => [:index, :show, :edit, :destroy]
     resources :memberships, :only => [:index]
-    resources :circles, :only => [:show, :new]
+    resources :circles, :only => [:show]
+    get 'circles/add' => 'circles#add'
+
   end
+
 
 
   resources :apartments, :circles
 
 
-  root 'welcome#home'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -21,6 +23,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+  root 'welcome#home'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
