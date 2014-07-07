@@ -1,4 +1,45 @@
-<h1> Apartments:  </h1>
+<h1>Welcome <%= current_user.name %> </h1>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img class="navbar-brand" src="/assets/thumblogo.png" id = "rommiez_logo">
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            
+        	  <ul class="nav navbar-nav navbar-right">
+               <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+               
+            	</ul>
+
+            <ul class="nav navbar-nav" id="myScrollspy" >
+    
+					<li> <%= link_to 'Home', user_path(current_user)%></li>
+					<li><%= link_to "Find Apartments", apartments_path%></li>
+					<li><%= link_to "Find Roommates", users_path%></li>
+				
+
+				 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Inbox</a></li>
+                        <li><a href="#">Create Message</a></li>
+           
+                        <li class="divider"></li>
+                        <li><a href="#">Trash</a></li>
+                    
+                    </ul>
+                </li>
+            </ul>
+            
+     
+        </li>
+    </ul>
+    </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 
 <%= form_tag apartments_path, :method => 'GET' do %>
 	<%= text_field_tag 'q', params[:q] %>

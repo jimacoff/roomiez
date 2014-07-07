@@ -60,6 +60,5 @@ class ApartmentsController < ApplicationController
 
 	def apartment_params
       params.require(:apartment).permit(:name, :street_address, :occupied, :country, :zipcode, :user_id, :photo)
-    end
-
+  end
 end

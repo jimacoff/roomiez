@@ -145,9 +145,15 @@ border-radius: 20px;
 background-color: #ccc;
 }
 
+#apartmentpage {
+	background-image: url("apartment2.jpg");
+	margin-top: 1%;
+	font-family: 'Lato', sans-serif;
+}
 
 #signinpage {
-	background-color: #B2C248;
+	background-image: url("friends.jpg");
+	background-repeat: fill;
 	margin-top: 1%;
 	font-family: 'Lato', sans-serif;
 
