@@ -18,9 +18,9 @@ class MembershipsController < ApplicationController
     	end
 	end
 
-	def add 
-		#testing for the 3 cases
-		if current_user !=
-	end
+	# def add 
+	# 	#testing for the 3 cases
+	# 	if current_user !=
+	# end
 
 end

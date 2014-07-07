@@ -1,5 +1,6 @@
 class Apartment < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :circle
 	has_many :tasks
 	
 	#Does stuff that has to do with photo upload
@@ -7,7 +8,7 @@ class Apartment < ActiveRecord::Base
  	 validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
 	def self.filter(query)
-		query.blank? ? Apartment.all : Apartment.where("name LIKE '%#{"query"}%'")
+		query.blank? ? Apartment.all : Apartment.where("street_address LIKE '%#{query}%'")
 	end
 	
 end

@@ -13,5 +13,6 @@
 <% else %>
 	<%= link_to "Find Apartments", apartments_path%>
 	<%= link_to "Find Roommates", users_path%>
+	<%= link_to "See my circle", user_circle_path(current_user, current_user.circles.first.id) %>
 
 <% end %>	

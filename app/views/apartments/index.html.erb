@@ -1,5 +1,11 @@
 <h1> Apartments:  </h1>
 
+<%= form_tag apartments_path, :method => 'GET' do %>
+	<%= text_field_tag 'q', params[:q] %>
+	<%= submit_tag 'SEARCH' %>
+<% end %><br>
+
+
 <ul>
 	<% @apartments.each do |a| %>
 		<li>

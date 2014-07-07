@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :apartments, :only => [:index, :show, :edit, :destroy]
     resources :memberships, :only => [:index]
+    resources :circles, :only => [:show, :new]
   end
 
 

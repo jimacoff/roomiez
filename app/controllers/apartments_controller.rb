@@ -6,7 +6,7 @@ class ApartmentsController < ApplicationController
 		if params[:user_id]
 			@apartments = Apartment.where(:user_id => params[:user_id]).paginate(:per_page =>10, :page => params[:page])
 		else
-			@apartments = Apartment.paginate(:per_page =>10, :page => params[:page])	
+			@apartments = Apartment.filter(params[:q]).paginate(:per_page =>10, :page => params[:page])	
 		end
 	end
 

@@ -1,12 +1,18 @@
 class CirclesController < ApplicationController
 
 	def create
-		@circle = Circle.new(params[:group])
-		@cicle.users << current_user
+		@circle = Circle.self.add_user_to_circle(current_user, params[:id])
 
 		if @group.save
-			# ... etc	
+			redirect_to user_path, notice: 'Member was successfully added to circle!'	
+		else
+			redirect_to user_path, notice: 'Member could not be added'
 		end
 	end
+
+	def show
+		@circle = Circle.all
+	end
+
 
 end
