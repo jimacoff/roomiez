@@ -1,66 +1,99 @@
-<h1>Welcome <%= current_user.name %> </h1>
-
+<div class="allpagebackground">
+<h1>&nbsp Welcome, <%= current_user.name %> </h1>
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <img class="navbar-brand" src="/assets/thumblogo.png" id = "rommiez_logo">
-        </div>
-
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img class="navbar-brand" src="/assets/thumblogo.png" id = "rommiez_logo">
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+        
+      </ul>
+      <ul class="nav navbar-nav" id="myScrollspy" >
+        <% if current_user.landlord %>
+        <li><%= link_to 'Home', user_path(current_user)%></li>
+        <li class="currentpage"> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
+        <li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Inbox</a></li>
+            <li><a href="#">Create Message</a></li>
             
-        	  <ul class="nav navbar-nav navbar-right">
-               <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-               
-            	</ul>
-
-            <ul class="nav navbar-nav" id="myScrollspy" >
-    
-					<li> <%= link_to 'Home', user_path(current_user)%></li>
-					<li><%= link_to "Find Apartments", apartments_path%></li>
-					<li><%= link_to "Find Roommates", users_path%></li>
-				
-
-				 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Inbox</a></li>
-                        <li><a href="#">Create Message</a></li>
-           
-                        <li class="divider"></li>
-                        <li><a href="#">Trash</a></li>
-                    
-                    </ul>
-                </li>
-            </ul>
+            <li class="divider"></li>
+            <li><a href="#">Trash</a></li>
             
-     
+            <% else %>
+            <li> <%= link_to 'Home', user_path(current_user)%></li>
+            <li class="currentpage"><%= link_to "Find Apartments", apartments_path%></li>
+            <li><%= link_to "Find Roommates", users_path%></li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Inbox</a></li>
+                <li><a href="#">Create Message</a></li>
+                
+                <li class="divider"></li>
+                <li><a href="#">Trash</a></li>
+                
+              </ul>
+            </li>
+          </ul>
+          
+          
         </li>
-    </ul>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-
+      </ul>
+      </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <% end %>
+</div>
+<br> 
+<p id="directiontext"> Search by location for an apartment : </p> <br>
 <%= form_tag apartments_path, :method => 'GET' do %>
 	<%= text_field_tag 'q', params[:q] %>
 	<%= submit_tag 'SEARCH' %>
 <% end %><br>
 
 
-<ul>
-	<% @apartments.each do |a| %>
-		<li>
-			<%= link_to a.name, user_apartment_path(current_user, a) %> 
-			<% if a.photo_file_name %>
-				<%= image_tag a.photo.url(:thumb) %>
-			<% end %>
-		</li>
-</ul>
+<table class="table table-hover">
 
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Landlord</th>
 
-<% end %>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @apartments.each do |a| %>
+        <tr>
+            <td>
+            <% if a.photo_file_name %>
+            <%= image_tag a.photo.url(:thumb) %>
+            <% end %>
+            </td>
+            <td>
+            <%= link_to a.name, user_apartment_path(current_user, a) %> 
+            </td>
+            <td>
+            <%= a.street_address %> <br/>
+            <%= a.country %> <br/>
+            <%= a.zipcode %> <br/>
+            </td>
+
+            
+        </tr>
+        <% end %>
+</table>
+
 
 <%= will_paginate @posts %>
 
 
-<%= link_to "Home", user_path(current_user) %>

@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*******************ALL PAGES*************************/
+.allpagebackground {
+	background-color:#E1E1E1;
+	border-radius:10px;
+}
+
+
+
 ul {
 	list-style:none;
 }
@@ -19,7 +26,9 @@ p.notice {
 
 /*******************WELCOME PAGE NAVBAR*************************/
 
-
+li.currentpage {
+	background-color:#bfea66;
+}
 
 .navbar-header li {
 	list-style: none;
@@ -78,6 +87,7 @@ h1 {
 	font-family: 'Lato', sans-serif;
 	font-size: 1.3em;
 	color: gray;
+	padding-top:5px;
 
 }
 
@@ -93,7 +103,20 @@ p {
 
 }
 
+/******************* TABLES *************************/
 
+#directiontext {
+	font-family: 'Lato', sans-serif;
+	padding-left:0;
+	font-size: 1.4em;
+	text-align:left;
+	padding-top:0;
+	line-height:0;
+}
+
+table {
+	font-family: 'Lato', sans-serif;
+}
 
 /******************* WELCOME - FOUNDERS SECTION *************************/
 

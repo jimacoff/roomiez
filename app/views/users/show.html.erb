@@ -1,4 +1,5 @@
-<h1>Welcome <%= @user.name %> </h1>
+<div class="allpagebackground">
+<h1>&nbsp Welcome, <%= current_user.name %> </h1>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -12,7 +13,7 @@
       </ul>
       <ul class="nav navbar-nav" id="myScrollspy" >
         <% if current_user.landlord %>
-        <li> <%= link_to 'Home', user_path(current_user)%></li>
+        <li class="currentpage"><%= link_to 'Home', user_path(current_user)%></li>
         <li> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
         <li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
         <li class="dropdown">
@@ -25,7 +26,7 @@
             <li><a href="#">Trash</a></li>
             
             <% else %>
-            <li> <%= link_to 'Home', user_path(current_user)%></li>
+            <li class="currentpage"> <%= link_to 'Home', user_path(current_user)%></li>
             <li><%= link_to "Find Apartments", apartments_path%></li>
             <li><%= link_to "Find Roommates", users_path%></li>
             
@@ -49,3 +50,16 @@
       </div><!-- /.container-fluid -->
     </nav>
     <% end %>
+
+<div class="jumbotron">
+  <h1>Welcome to Roomiez!</h1>
+  <% if current_user.landlord == false %>
+  <p>Roomiez allows you to find and connect with roommates looking to live in the same location. Once you have joined a circle together, you and your roommate can embark on the apartment hunt together, ensuring that you live where you want, with the people you want to live with! Select "Find Roommates" above to get started. </p>
+  <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+  <% else %>
+  <p>As a landlord, Roomiez allows you to efficiently manage all of your apartments on a single platform. Seemlessly toggle through your various circles to collect rent payment online, manage maintenance requests, and easily interact with your tenants. 
+  </p>
+  <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+</div>
+</div>
+<% end %>
