@@ -11,7 +11,7 @@ gem 'rails_12factor', group: :production
 
 group :development do
   # gem 'jazz_hands'
-  gem 'better_errors'
+  #gem 'better_errors'
   gem 'quiet_assets'
   gem 'puma'
 end

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	#has_many :tasks, :foreign_key => :user_id
 	#do we need to add column of :creator_user_id and :user_id for :tasks
 
-	has_many :memberships
+	has_many :memberships, :dependent => :destroy
 	has_many :circles, through: :memberships
 
 	has_many :messages

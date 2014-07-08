@@ -7,11 +7,9 @@ Rails.application.routes.draw do
     resources :apartments, :only => [:index, :show, :edit, :destroy]
     resources :memberships, :only => [:index]
     resources :circles, :only => [:show]
-    get 'circles/add' => 'circles#add'
-
   end
 
-
+  get 'circles/add' => 'circles#add'
 
   resources :apartments, :circles
 
