@@ -46,8 +46,9 @@ class Circle < ActiveRecord::Base
 				end
 			end
 		end		
-
 		circle
 	end
 
 end
+
+
