@@ -1,65 +1,81 @@
 <div class="allpagebackground">
-<h1>&nbsp Welcome, <%= current_user.name %> </h1>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <img class="navbar-brand" src="/assets/thumblogo.png" id = "rommiez_logo">
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+  <h1>&nbsp Welcome, <%= current_user.name %> </h1>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <img class="navbar-brand" src="/assets/thumblogo.png" id = "rommiez_logo">
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         
-      </ul>
-      <ul class="nav navbar-nav" id="myScrollspy" >
-        <% if current_user.landlord %>
-        <li class="currentpage"><%= link_to 'Home', user_path(current_user)%></li>
-        <li> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
-        <li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Inbox</a></li>
-            <li><a href="#">Create Message</a></li>
-            
-            <li class="divider"></li>
-            <li><a href="#">Trash</a></li>
-            
-            <% else %>
-            <li class="currentpage"> <%= link_to 'Home', user_path(current_user)%></li>
-            <li><%= link_to "Find Apartments", apartments_path%></li>
-            <li><%= link_to "Find Roommates", users_path%></li>
-            
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          
+        </ul>
+        <!-- Nav bar if landlord and current_user -->
+        <ul class="nav navbar-nav" id="myScrollspy" >
+          <% if current_user.landlord %>
+            <li class="currentpage"><%= link_to 'Home', user_path(current_user)%></li>
+            <li> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
+            <li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Inbox</a></li>
                 <li><a href="#">Create Message</a></li>
-                
                 <li class="divider"></li>
                 <li><a href="#">Trash</a></li>
-                
-              </ul>
+              </ul>     
             </li>
-          </ul>
-          
-          
-        </li>
-      </ul>
-      </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    <% end %>
 
-<div class="jumbotron">
-  <h1>Welcome to Roomiez!</h1>
-  <% if current_user.landlord == false %>
-  <p>Roomiez allows you to find and connect with roommates looking to live in the same location. Once you have joined a circle together, you and your roommate can embark on the apartment hunt together, ensuring that you live where you want, with the people you want to live with! Select "Find Roommates" above to get started. </p>
-  <a class="btn btn-primary btn-lg" role="button">Learn more</a>
-  <% else %>
-  <p>As a landlord, Roomiez allows you to efficiently manage all of your apartments on a single platform. Seemlessly toggle through your various circles to collect rent payment online, manage maintenance requests, and easily interact with your tenants. 
-  </p>
-  <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+          <!-- Nav bar for tenant and curernt_user -->
+          <% elsif !current_user.landlord %>
+              <li class="currentpage"> <%= link_to 'Home', user_path(current_user)%></li>
+              <li><%= link_to "Find Roommates", users_path%></li>
+              <li><%= link_to "Find Apartments", apartments_path%></li>
+                            
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Inbox</a></li>
+                  <li><a href="#">Create Message</a></li>                  
+                  <li class="divider"><a href="#">Trash</a></li>
+                </ul>
+              </li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+      <div class="jumbotron">
+        <% if !current_user.landlord && current_user == @user %>
+          <% if current_user.circles.empty? %>
+            <h1>Welcome to Roomiez!</h1>
+            <p>
+              Roomiez allows you to find and connect with roommates looking to live in the same location. Once you have joined a circle together, you and your roommate can embark on the apartment hunt together, ensuring that you live where you want, with the people you want to live with! Select "Find Roommates" to get started. 
+            </p>
+            <a class="btn btn-primary btn-lg" role="button" href="/users">Find Roommates</a>
+            <% elsif @user.circles.any? %>
+              <h2>Your circle:</h2>
+              <% @user.circles.each_with_index do |c, index| %>
+                <% c.users.each do |user| %>
+                  <%= user.name %>,
+                <% end %>
+                <%= link_to "Leave circle?", membership_path(@memberships[index]), :confirm => 'Are you sure?', :method => :delete %>
+              <% end %>
+            <% end %>
+        <% elsif !current_user.landlord && current_user != @user %>
+        <ul>
+          <li><%= @user.name %></li>
+          <li><%= @user.email %></li>
+          <li><%= @user.age %></li>
+        </ul>
+        <!-- user_membership_path(current_user, current_user.memberships) -->
+        <% elsif current_user.landlord && current_user == @user %>
+          <p>
+            As a landlord, Roomiez allows you to efficiently manage all of your apartments on a single platform. Seemlessly toggle through your various circles to collect rent payment online, manage maintenance requests, and easily interact with your tenants.
+          </p>
+          <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+        <% end %>
+      </div>
+    </div>
 </div>
-</div>
-<% end %>

@@ -18,9 +18,15 @@ class MembershipsController < ApplicationController
     	end
 	end
 
-	# def add 
-	# 	#testing for the 3 cases
-	# 	if current_user !=
-	# end
+
+
+	def destroy
+
+		@membership = Membership.find(params[:id])
+    	@membership.destroy
+
+		# current_user.memberships.first.destroy
+		redirect_to "/users/#{current_user.id}" 
+	end
 
 end

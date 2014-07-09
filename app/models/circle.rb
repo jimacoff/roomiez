@@ -28,14 +28,22 @@ class Circle < ActiveRecord::Base
 			#Currrent user will join user_to_add circle
 			if join_other_circle == "1"
 				circle = user.circles.first
-				circle.users << current_user.circles.first.users
-				current_user.circles.first.destroy
+				if !circle.users.include?(current_user)
+					circle.users << current_user.circles.first.users
+					current_user.circles.first.destroy
+				else
+					return false
+				end
 			#user_to_add will join current_user circle	
 			elsif join_other_circle == "0"
 				circle = current_user.circles.first
-				if circle.users.include?(current_user)
-				circle.users << user.circles.first.users
-				user.circles.first.destroy
+				if !circle.users.include?(user)
+					# pry(Circle)> circle.users.include?(User.where(:name => "Sabra"))
+					circle.users << user.circles.first.users
+					user.circles.first.destroy
+				else
+					return false
+				end
 			end
 		end		
 

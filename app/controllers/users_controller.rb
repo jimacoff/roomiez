@@ -6,7 +6,17 @@ class UsersController < ApplicationController
 
 
 	def show
-		@user = current_user
+		@user = User.find(params[:id])
+		# Creates an array of the membership ids that tie the current user to their circles
+		@memberships = []
+		@user.circles.each do |c|
+			c.memberships.each do |m|
+				if @user.id == m.user_id.to_i
+					@memberships << m.id
+				end
+			end
+		end
+		# @memberships = current_user.memberships.pluck(:id)
 	end
 
 

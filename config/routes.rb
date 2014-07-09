@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     resources :apartments, :only => [:index, :show, :edit, :destroy]
-    resources :memberships, :only => [:index]
-    resources :circles, :only => [:show]
+    # resources :memberships, :only => [:index, :destroy]
+    resources :circles, :only => [:show, :index]
   end
+
+  resources :memberships, :only => [:index, :destroy]
 
   get 'circles/add' => 'circles#add'
 

@@ -1,0 +1,7 @@
+<h1>This are all the circles</h1>
+
+<% @circles.each do |c| %>
+	<% c.users.each do |user| %>
+		<%= user.name %>,
+	<% end %>
+<% end %>

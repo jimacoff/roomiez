@@ -27,8 +27,9 @@
             
             <% else %>
             <li> <%= link_to 'Home', user_path(current_user)%></li>
-            <li class="currentpage"><%= link_to "Find Apartments", apartments_path%></li>
             <li><%= link_to "Find Roommates", users_path%></li>
+            <li class="currentpage"><%= link_to "Find Apartments", apartments_path%></li>
+
             
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
@@ -87,8 +88,6 @@
             <%= a.country %> <br/>
             <%= a.zipcode %> <br/>
             </td>
-
-            
         </tr>
         <% end %>
 </table>
