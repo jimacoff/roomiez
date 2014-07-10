@@ -1,3 +1,9 @@
 class Message < ActiveRecord::Base
-	has_and_belongs_to_many :users
+  # attr_accessible :subject, :body, :sender, :recepient, :read
+
+  validates_presence_of :subject, :body, :recepient
+  validates :subject, length: { minimum: 0, maximum: 35 }
+  validates :body, length: { minimum: 3, maximum: 1000 }
+
+  belongs_to :user
 end

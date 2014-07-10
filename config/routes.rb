@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :apartments, :only => [:index, :show, :edit, :destroy, :update]
     # resources :memberships, :only => [:index, :destroy]
     resources :circles, :only => [:show, :index]
+    resources :messages, :only => [:index, :show, :new, :create, :destroy]
   end
 
   resources :memberships, :only => [:index, :destroy]

@@ -19,11 +19,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Inbox</a></li>
-            <li><a href="#">Create Message</a></li>
-            
-            <li class="divider"></li>
-            <li><a href="#">Trash</a></li>
+            <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
+                <li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
+                <li class="divider"></li>
+                <li><a href="#">Trash</a></li>
             
             <% else %>
             <li> <%= link_to 'Home', user_path(current_user)%></li>
@@ -34,9 +33,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Inbox</a></li>
-                <li><a href="#">Create Message</a></li>
-                
+                <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
+                <li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
                 <li class="divider"></li>
                 <li><a href="#">Trash</a></li>
                 
