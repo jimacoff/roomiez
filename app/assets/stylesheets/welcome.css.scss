@@ -24,12 +24,22 @@ p.notice {
 
 /*******************WELCOME PAGE NAVBAR*************************/
 
-li.currentpage {
-	background-color:#bfea66;
+li #messageshover:hover {
+	background-color:#C2E066;
+
 }
+
+.navbar {
+margin-top:5px;
+}
+li.currentpage {
+	background-color:#C2E066;
+}
+
 
 .navbar-header li {
 	list-style: none;
+
 }
 
 .navbar-brand {
@@ -48,12 +58,20 @@ li.currentpage {
 	width: 140px;
 }
 
+
 /******************* BODY *************************/
+
 
 body {
 	position: relative;
+	background-image: url('apartmenttest.jpg');
+	opacity: 30%;
+	font-size: 17px;
 }
 
+h4 {
+	padding-top:5px;
+}
 
 
 

@@ -1,5 +1,5 @@
 <div class="allpagebackground">
-<h1>&nbsp Welcome, <%= current_user.name %> </h1>
+
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -8,15 +8,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav navbar-right">
+         <li><h4>&nbsp Welcome, <%= current_user.name %> </h4></li>
         <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
       </ul>
 
       <ul class="nav navbar-nav" id="myScrollspy" >
         <% if current_user.landlord %>
-          <li class="currentpage"><%= link_to 'Home', user_path(current_user)%></li>
+          <li><%= link_to 'Home', user_path(current_user)%></li>
           <li> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
           <li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
-          <li class="dropdown">
+          <li class="dropdown" id="messageshover">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
@@ -25,10 +26,10 @@
                 <li><a href="#">Trash</a></li>
             
         <% else %>
-          <li class="currentpage"> <%= link_to 'Home', user_path(current_user)%></li>
+          <li> <%= link_to 'Home', user_path(current_user)%></li>
           <li><%= link_to "Find Apartments", apartments_path%></li>
           <li><%= link_to "Find Roommates", users_path%></li>
-          <li class="dropdown">
+          <li class="dropdown" id="messageshover">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
@@ -45,7 +46,7 @@
 </div>
 
 
-
+<div id="inboxbackground">
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#inbox" role="tab" data-toggle="tab">Inbox</a></li>
@@ -95,8 +96,10 @@
     </div>
   </div>
 
-
 </div>
+</div>
+
+
 
 
 

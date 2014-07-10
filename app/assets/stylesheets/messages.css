@@ -1,7 +1,19 @@
 
+#inboxbackground {
+	background-color: white;
+	border-radius:10px;
+	padding-top:1%;
+	padding-left:1%;
+	padding-bottom:1%;
+
+}
 
 #newMessage {
-	margin-left: 20px;
+	padding-top:0.2px;
+	padding-left:1%;
+	background-color: white;
+	border-radius:10px;
+	padding-bottom:0.2px;
 }
 #inboxMessages {
 	margin:20px;
@@ -15,6 +27,7 @@
 }
 #inboxMessages td{
     width: 30%;
+
 }
 #sentMessages {
 	margin:20px;
@@ -30,8 +43,17 @@
     width: 30%;
 }
 #readMessage {
+	padding-top:0.2px;
+	padding-left:1%;
 	margin:20px;
+	background-color: white;
+	border-radius:10px;
+	padding-bottom:5.2px;
+	padding-right:2%;
+
 }
+
+
 #readMessage table{
     border-collapse: collapse;
     border-spacing: 0;
