@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users do
-    resources :apartments, :only => [:index, :show, :edit, :destroy]
+    resources :apartments, :only => [:index, :show, :edit, :destroy, :update]
     # resources :memberships, :only => [:index, :destroy]
     resources :circles, :only => [:show, :index]
   end

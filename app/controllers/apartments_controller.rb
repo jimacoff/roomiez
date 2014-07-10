@@ -12,7 +12,7 @@ class ApartmentsController < ApplicationController
 
 	def new
    		@apartment = Apartment.new
-  	end
+  end
 
 	def create
 		@apartment = Apartment.new(apartment_params)
@@ -29,11 +29,17 @@ class ApartmentsController < ApplicationController
 	end
 
 	def update
-		# @apartment = Apartment.edit
-  		if @apartment.update(apartment_params)
-    		redirect_to "/users/#{current_user.id}/apartments", notice: 'Apartment was successfully updated.'
-  		else
-    		render :edit
+			if params[:add_to_circle]
+				binding.pry
+				if @apartment.add_to_circle(current_user)
+					redirect_to user_path(current_user), notice: 'Apartment was successfully added to circle!'
+				end
+			else
+				if @apartment.update(apartment_params)
+    			redirect_to "/users/#{current_user.id}/apartments", notice: 'Apartment was successfully updated.'
+  			else
+    			render :edit
+    		end
   		end
 	end
 
@@ -50,9 +56,7 @@ class ApartmentsController < ApplicationController
 	end
 
 
-
 	private
-
 
 	def set_apartment
       @apartment = Apartment.find(params[:id])

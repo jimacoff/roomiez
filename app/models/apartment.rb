@@ -10,5 +10,21 @@ class Apartment < ActiveRecord::Base
 	def self.filter(query)
 		query.blank? ? Apartment.all : Apartment.where("street_address LIKE '%#{query}%'")
 	end
-	
+
+	# change the apt.circle_id to current cricle
+	def add_to_circle(current_user)
+		# if usert has a circle then he/she can add an apt
+		if current_user.memberships.any?
+			self.circle_id = current_user.memberships.first.circle_id
+			# add apartment's landlord to circle
+			# change landlord's circle_id to match current circle
+			landlord = User.find(self.user_id)
+			circle = Circle.find(self.circle_id)
+			circle.users << landlord
+			
+		else
+			redirect_to user_path(current_user), notice: 'You need a circle of friends before adding an apartment!'
+		end
+	end
+
 end

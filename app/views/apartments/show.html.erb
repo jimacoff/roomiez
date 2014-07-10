@@ -1,25 +1,24 @@
 <h1> <%= @apartment.name %> </h1>
-<%= link_to "Edit", edit_user_apartment_path(current_user, @apartment) %> 
-<%= link_to "Delete", "/users/#{current_user.id}/apartments/#{@apartment.id}", method: 'delete' %> 
-
-
-
+<%= link_to "Edit", edit_user_apartment_path(current_user, @apartment) %>
+<%= link_to "Delete", "/users/#{current_user.id}/apartments/#{@apartment.id}", method: 'delete' %>
+<% if !current_user.landlord %>
+<%= link_to "Add apartment to circle", user_apartment_path(current_user, @apartment, :add_to_circle => true), method: 'put' %>
+<% end %>
 <div>
-	<%= image_tag @apartment.photo.url(:medium) %>	
+	<%= image_tag @apartment.photo.url(:medium) %>
 </div>
-
 <div>
 	<ul>
 		<li><%= @apartment.street_address %></li>
 		<li><%= @apartment.country %></li>
 		<li><%= @apartment.zipcode %></li>
-		<li><% if @apartment.occupied %>
+		<li>
+			<% if @apartment.occupied %>
 			The apartment is currently occupied
-		<% else %>
+			<% else %>
 			The apartment is currently available
-		<% end %>
+			<% end %>
 		</li>
 	</ul>
 </div>
-
 <%= link_to 'Back', user_apartments_path(current_user) %>

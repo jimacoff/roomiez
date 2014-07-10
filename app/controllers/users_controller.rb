@@ -16,13 +16,10 @@ class UsersController < ApplicationController
 				end
 			end
 		end
-		# @memberships = current_user.memberships.pluck(:id)
 	end
 
 
-	# def about
-	# 	param(:id)
-	# end
+
 
 	private
 

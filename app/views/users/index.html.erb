@@ -86,8 +86,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <%= link_to "Add #{u.name} to your circle!", circles_add_path(:user_to_add => u.id, :join_other_circle => "0") %>
-                <%= link_to "Join #{u.name}'s circle", "/circles/add?user_to_add=#{u.id}&join_other_circle=1" %>
+                <%= link_to "Add #{u.name}'s circle to your circle!", circles_add_path(:user_to_add => u.id) %>
               </div>
             </div>
           </div>
