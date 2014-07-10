@@ -1,0 +1,36 @@
+<link href="/assets/messages.css" rel="stylesheet">
+
+<link href="/assets/bootstrap.css" rel="stylesheet">
+<% if message.recepient == @user.email %>
+<table class="table">
+  <tr>
+  
+    <td>
+      
+       <% if message.read %>
+         <span class="glyphicon glyphicon-ok"></span> 
+         <% else %>
+         <span class="glyphicon glyphicon-envelope"></span> 
+      <% end %>
+      <%= link_to message.subject, user_message_path(current_user, message) %>
+    </td>
+    <td>
+      <%= message.sender %>
+    </td>
+    <td><%= message.created_at %></td>
+    <td>
+ 
+    <button type="button" class="btn btn-default btn-sm">
+      <%= link_to 'Delete', user_message_path(current_user,message), method: :delete, data: { confirm: 'Are you sure?' } %>
+     <span class="glyphicon glyphicon-trash"></span> 
+    </button> 
+    <button type="button" class="btn btn-default btn-sm">
+      <%= link_to 'Reply', new_user_message_path%>
+     <span class="glyphicon glyphicon-share-alt"></span> 
+    </button>
+
+  </td>
+ 
+  </tr>
+</table>
+<% end %>

@@ -1,0 +1,107 @@
+<div class="allpagebackground">
+<h1>&nbsp Welcome, <%= current_user.name %> </h1>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img class="navbar-brand" src="/assets/thumblogo.png" id = "rommiez_logo">
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+      </ul>
+
+      <ul class="nav navbar-nav" id="myScrollspy" >
+        <% if current_user.landlord %>
+          <li class="currentpage"><%= link_to 'Home', user_path(current_user)%></li>
+          <li> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
+          <li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
+                <li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
+                <li class="divider"></li>
+                <li><a href="#">Trash</a></li>
+            
+        <% else %>
+          <li class="currentpage"> <%= link_to 'Home', user_path(current_user)%></li>
+          <li><%= link_to "Find Apartments", apartments_path%></li>
+          <li><%= link_to "Find Roommates", users_path%></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
+                <li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
+                <li class="divider"></li>
+                <li><a href="#">Trash</a></li>
+              </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+
+
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#inbox" role="tab" data-toggle="tab">Inbox</a></li>
+  <li><a href="#sent" role="tab" data-toggle="tab">Sent Messages</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+
+  <div class="tab-pane active" id="inbox">
+    <div id="inboxMessages">
+      <h2>Inbox</h2>
+       <button type="button" class="btn btn-default btn-sm">
+        <%= link_to 'Create Message', new_user_message_path%>
+        <span class="glyphicon glyphicon-pencil"></span> 
+        </button> 
+  
+      <table class="table table-hover"> 
+       <tr>
+        <td>Subject</td>
+        <td>From</td>
+        <td>Date</td>
+        <td>Functions</td>
+      </tr>
+     </table>
+    <div id="messages">
+      <%= render @messages %> 
+    </div>
+  </div>
+  </div>
+
+  <div class="tab-pane" id="sent">
+
+  <div id="sentMessages">
+    <h2>Sent Messages</h2>
+    <table class="table table-hover">
+      <tr>
+        <td>Subject</td>
+        <td>To</td>
+        <td>Date</td>
+         <td>Functions</td>
+
+      </tr>
+    </table>
+    <div id="messages">
+      <%= render 'messages/sent' %> 
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+  
+
+  

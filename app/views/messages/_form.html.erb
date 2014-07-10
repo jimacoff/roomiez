@@ -1,0 +1,16 @@
+<%= form_for @message, :url => user_messages_path(current_user) do |form| %>
+
+  <%= form.label :recepient %>
+  <%= form.text_field :recepient %> <br><br>
+
+  <%= form.label :subject %>
+  <%= form.text_field :subject %> <br><br>
+
+  <%= form.label :body %>
+  <%= form.text_area :body %><br><br>
+  <br>
+  <%= form.submit 'Send message' %>
+
+<% end %>
+
+

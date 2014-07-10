@@ -1,0 +1,26 @@
+<% @messages.each do |m| %>
+<% if m.sender == @user.email %>
+<table class="table">
+  <tr>
+    <td>
+     
+      <% if m.read %>
+         <span class="glyphicon glyphicon-ok"></span> 
+         <% else %>
+         <span class="glyphicon glyphicon-envelope"></span> 
+
+      <% end %>
+       <%= link_to m.subject, user_message_path(current_user, m) %>
+    </td>
+    <td><%= m.recepient %></td>
+    <td><%= m.created_at %></td>
+    <td><button type="button" class="btn btn-default btn-sm">
+      <%= link_to 'Delete', user_message_path(current_user,m), method: :delete, data: { confirm: 'Are you sure?' } %>
+     <span class="glyphicon glyphicon-trash"></span> 
+    </button> </td>
+       
+
+  </tr>
+</table>
+<% end %>
+<% end %>
