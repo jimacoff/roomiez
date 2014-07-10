@@ -64,8 +64,14 @@
         <tr>
             <th>Picture</th>
             <th>Name</th>
+            <th>Rent Price</th>
             <th>Location</th>
             <th>Landlord</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+            <th>Smoking</th>
+            <th>Pets</th>
+            <th>Occupied</th>
 
         </tr>
     </thead>
@@ -82,9 +88,44 @@
             <%= link_to a.name, user_apartment_path(current_user, a) %> 
             </td>
             <td>
+              <%= a.rent %>
+            <td>
             <%= a.street_address %> <br/>
+            <%= a.city %><br/>
+            <%= a.state %><br/>
             <%= a.country %> <br/>
             <%= a.zipcode %> <br/>
+            </td>
+            <td>
+              <% owner = User.find(a.user_id) %>
+              <%= owner.name %>
+            </td>
+            <td>
+              <%= a.bedrooms %>
+            </td>
+            <td>
+              <%= a.bathrooms %>
+            </td>
+            <td>
+              <% if a.smoking %>
+                Yes
+              <% else %>
+                No
+              <% end %>
+            </td>
+            <td>
+              <% if a.pets %>
+                Yes
+              <% else %>
+                No
+              <% end %>
+            </td>
+            <td>
+              <% if a.occupied %>
+                Yes
+              <% else %>
+                No
+              <% end %>
             </td>
         </tr>
         <% end %>

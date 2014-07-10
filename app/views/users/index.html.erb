@@ -77,7 +77,7 @@
                 <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> Profile</strong> </h3>
               </div>
               <div class="modal-body">
-                <% if u.photo %>
+                <% if u.photo_file_name %>
                   <h4> Photo : <%= image_tag u.photo.url(:thumb) %> </h4>
                 <% end %>
                 <h4> Email : <%= u.email %> </h4>

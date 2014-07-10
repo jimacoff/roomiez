@@ -8,7 +8,7 @@ class Apartment < ActiveRecord::Base
  	 validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
 	def self.filter(query)
-		query.blank? ? Apartment.all : Apartment.where("street_address LIKE '%#{query}%'")
+		query.blank? ? Apartment.all : Apartment.where("street_address LIKE '%#{query}%' OR city LIKE '%#{query}%' OR state LIKE '%#{query}%'")
 	end
 
 	# change the apt.circle_id to current cricle

@@ -22,6 +22,16 @@
 
   <br/><br/>
 
+  <%= f.label :city %><br/>
+  <%= f.text_field :city %>  
+
+  <br/><br/>
+
+  <%= f.label :state %><br/>
+  <%= f.text_field :state %>  
+
+  <br/><br/>
+
   <%= f.label :zipcode %><br/>
   <%= f.text_field :zipcode %>  
 
@@ -29,11 +39,42 @@
 
   <%= f.label :country %><br/>
   <%= f.text_field :country %>
+
+  <br/><br/>
+
+  <%= f.label :rent %><br/>
+  <%= f.text_field :rent %>
+
+  <br/><br/>
+
+
+  <%= f.label :bedrooms %><br/>
+  <%= f.text_field :bedrooms %>
+
+    <br/><br/>
+
+  <%= f.label :bathrooms %><br/>
+  <%= f.text_field :bathrooms %>
 <div>
   <br/><br/>
 
   <%= f.label :occupied, "Please check box if the apartment is occupied: " %>
   <%= f.check_box :occupied %> 
+
+    <br/><br/>
+
+  <%= f.label :furnished, "Please check box if the apartment is furnished: " %>
+  <%= f.check_box :furnished %> 
+
+    <br/><br/>
+
+  <%= f.label :smoking, "Please check box if the apartment allows smoking: " %>
+  <%= f.check_box :smoking %> 
+
+    <br/><br/>
+
+  <%= f.label :pets, "Please check box if the apartment allows pets: " %>
+  <%= f.check_box :pets %> 
 
   <br/><br/>
   
