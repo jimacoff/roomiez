@@ -16,15 +16,25 @@ class Apartment < ActiveRecord::Base
 		# if usert has a circle then he/she can add an apt
 		if current_user.memberships.any?
 			self.circle_id = current_user.memberships.first.circle_id
+			self.occupied = true
+			self.save
 			# add apartment's landlord to circle
 			# change landlord's circle_id to match current circle
 			landlord = User.find(self.user_id)
 			circle = Circle.find(self.circle_id)
 			circle.users << landlord
-			
-		else
-			redirect_to user_path(current_user), notice: 'You need a circle of friends before adding an apartment!'
 		end
 	end
 
+	def remove_from_circle
+		# Looks for the apartment's landlord
+		landlord = User.find(self.user_id)
+		# Looks for the landlord's membership
+		membership = Membership.where(circle_id: self.circle_id, user_id: landlord.id).first
+		membership.destroy
+		# Delete circle's info from apt
+		self.circle_id = nil
+		self.occupied = nil
+		self.save
+	end
 end

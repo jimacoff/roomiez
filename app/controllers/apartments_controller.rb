@@ -29,18 +29,19 @@ class ApartmentsController < ApplicationController
 	end
 
 	def update
-			if params[:add_to_circle]
-				binding.pry
-				if @apartment.add_to_circle(current_user)
-					redirect_to user_path(current_user), notice: 'Apartment was successfully added to circle!'
-				end
+		if params[:add_to_circle]
+			if @apartment.add_to_circle(current_user)
+				redirect_to user_path(current_user), notice: 'Apartment was successfully added to circle!'				
 			else
-				if @apartment.update(apartment_params)
-    			redirect_to "/users/#{current_user.id}/apartments", notice: 'Apartment was successfully updated.'
-  			else
-    			render :edit
-    		end
-  		end
+				redirect_to user_path(current_user), notice: 'You need a circle of friends before adding an apartment!'
+			end
+		else
+			if @apartment.update(apartment_params)
+   				redirect_to "/users/#{current_user.id}/apartments", notice: 'Apartment was successfully updated.'
+ 			else
+   			render :edit 
+   		end
+  	end
 	end
 
 
@@ -51,8 +52,16 @@ class ApartmentsController < ApplicationController
 	end
 
 	def destroy
-		@apartment.destroy
-		redirect_to "/users/#{current_user.id}/apartments"
+		if params[:remove_apt_from_circle]
+			if @apartment.remove_from_circle
+				redirect_to user_path(current_user), notice: 'Apartment was successfully removed circle!'
+			else
+				redirect_to user_path(current_user), notice: 'Apartment could not be removed'
+			end
+		else
+			@apartment.destroy
+			redirect_to "/users/#{current_user.id}/apartments"
+		end
 	end
 
 

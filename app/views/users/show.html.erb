@@ -59,11 +59,16 @@
             <a class="btn btn-primary btn-lg" role="button" href="/users">Find Roommates</a>
             <% elsif @user.circles.any? %>
               <h2>Your circle:</h2>
-              <% @user.circles.each_with_index do |c, index| %>
+              <% @user.circles.each_with_index do |c, index| %>                 
                 <% c.users.each do |user| %>
-                  <%= user.name %>,
+                  <%= user.name %>
                 <% end %>
-                <%= link_to "Leave circle?", membership_path(@memberships[index]), :confirm => 'Are you sure?', :method => :delete %>
+                <% if c.apartment %>
+                  <%= c.apartment.name %>
+                  <%= link_to "Remove apartment", user_apartment_path(current_user, c.apartment, :remove_apt_from_circle => true), :method => :delete %>
+                <% end %>
+
+              <%= link_to "Leave circle", membership_path(@memberships[index]), :method => :delete %>
               <% end %>
             <% end %>
         <% elsif !current_user.landlord && current_user != @user %>
