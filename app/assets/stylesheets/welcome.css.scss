@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*******************ALL PAGES*************************/
+
+
 .allpagebackground {
 	background-color:#E1E1E1;
 	border-radius:10px;
@@ -59,14 +61,24 @@ li.currentpage {
 }
 
 
+/******************* apartment view *************************/
+
+#apartmentshow {
+	padding-top:0.2px;
+	padding-left:1%;
+	background-color: white;
+	border-radius:10px;
+	padding-bottom:0.2px;
+	margin-top:1.5%;
+}
 /******************* BODY *************************/
 
-
-body {
+body.pagebodybackground {
 	position: relative;
 	background-image: url('apartmenttest.jpg');
 	opacity: 30%;
 	font-size: 17px;
+	margin-bottom:1.5%;
 }
 
 h4 {

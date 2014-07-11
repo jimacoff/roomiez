@@ -14,7 +14,7 @@
         <ul class="nav navbar-nav" id="myScrollspy" >
           <% if current_user.landlord %>
             <li><%= link_to 'Home', user_path(current_user)%></li>
-            <li> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
+            <li class="currentpage"> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
             <li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
 
             <li class="dropdown">
@@ -49,6 +49,7 @@
 </nav>
 </div>
 
+<body class="pagebodybackground">
  <div id="inboxbackground">
 <br> 
 <p id="directiontext"> Search by location for an apartment : </p> <br>
@@ -134,5 +135,6 @@
 
 <%= will_paginate @posts %>
 </div>
+</body>
 
 

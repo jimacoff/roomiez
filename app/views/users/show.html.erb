@@ -48,6 +48,7 @@
 
 </nav>
 </div>
+<body class="pagebodybackground">
       <div class="jumbotron">
         <% if !current_user.landlord && current_user == @user %>
           <% if current_user.circles.empty? %>
@@ -78,6 +79,7 @@
         </ul>
         <!-- user_membership_path(current_user, current_user.memberships) -->
         <% elsif current_user.landlord && current_user == @user %>
+           <h1>Welcome to Roomiez!</h1>
           <p>
             As a landlord, Roomiez allows you to efficiently manage all of your apartments on a single platform. Seemlessly toggle through your various circles to collect rent payment online, manage maintenance requests, and easily interact with your tenants.
           </p>
@@ -85,4 +87,5 @@
         <% end %>
       </div>
     </div>
+  </body>
 
