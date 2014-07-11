@@ -8,10 +8,11 @@ class CirclesController < ApplicationController
 
 
 	def add
-		if !current_user.landlord && current_user.memberships.any?
-			redirect_to user_path(current_user), notice: 'You already have a circle! Leave your current circle to join a different one.'
+		# binding.pry
+		# if !current_user.landlord && current_user.memberships.any?
+		# 	redirect_to user_path(current_user), notice: 'You already have a circle! Leave your current circle to join a different one.'
 
-		else 
+		# else 
 			@circle = Circle.add_user_to_circle(current_user, params[:user_to_add])
 
 			if @circle && @circle.save
@@ -21,7 +22,7 @@ class CirclesController < ApplicationController
 			else
 				redirect_to user_path(current_user), notice: 'An error occurred, and the member could not be added to a circle.'
 			end
-		end
+		# end
 	end
 
 

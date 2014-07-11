@@ -63,10 +63,15 @@
       </thead>
       <tbody>
         <% @users.each do |u| %>
-        <% if u.landlord == false && u != current_user %>
+        
+        <% if u.landlord == false && u != current_user && 
+          (u.circles.empty? || !u.circles.first.users.include?(current_user)) %>
         <tr>
-          <td> <%= image_tag u.photo.url(:thumb) %>
-          </td>
+          <% if u.photo_file_name %>
+            <td> <%= image_tag u.photo.url(:thumb) %> </td>
+          <% else %>
+            <td>  <img src="/assets/face.jpeg" id="facepic"></td>
+          <% end %>
           <td><%= link_to u.name, "users/#{u.id}" %></td>
           <!-- Button trigger modal -->
           <td
@@ -94,7 +99,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><%= link_to "Add #{u.name}'s circle to your circle!", circles_add_path(:user_to_add => u.id) %> </button>
+                <%= link_to "Add #{u.name}'s circle to your circle!", circles_add_path(:user_to_add => u.id), :class => "btn btn-default" %>
               </div>
             </div>
           </div>
@@ -116,8 +121,11 @@
           <% @users.each do |u| %>
           <% if u.landlord == true && u != current_user %>
           <tr>
-            <td> <%= image_tag u.photo.url(:thumb) %>
-            </td>
+            <% if u.photo_file_name %>
+              <td> <%= image_tag u.photo.url(:thumb) %> </td>
+            <% else %>
+              <td>  <img src="/assets/face.jpeg" id="facepic"></td>
+            <% end %>
             <td><%= link_to u.name, "users/#{u.id}" %></td>
             <!-- Button trigger modal -->
             <td

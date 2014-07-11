@@ -57,25 +57,31 @@
 </div>
 <body class="pagebodybackground">
       <div class="jumbotron">
-        <% if !current_user.landlord && current_user == @user %>
-          <% if current_user.circles.empty? %>
+        <% if current_user == @user && current_user.circles.empty? %>
+          <% if !current_user.landlord  %>
             <h1>Welcome to Roomiez!</h1>
             <p>
               Roomiez allows you to find and connect with roommates looking to live in the same location. Once you have joined a circle together, you and your roommate can embark on the apartment hunt together, ensuring that you live where you want, with the people you want to live with! Select "Find Roommates" to get started. 
             </p>
             <a class="btn btn-primary btn-lg" role="button" href="/users">Find Roommates</a>
 
-            <% elsif @user.circles.any? %>
-
-              <h2>Your Circle:</h2>
-              <% @user.circles.each_with_index do |c, index| %>                 
-                <% c.users.each do |user| %>
-                
-                 
+          <% elsif current_user.landlord && current_user == @user %>
+           <h1>Welcome to Roomiez!</h1>
+            <p>
+              As a landlord, Roomiez allows you to efficiently manage all of your apartments on a single platform. Seemlessly toggle through your various circles to collect rent payment online, manage maintenance requests, and easily interact with your tenants.
+            </p>
+            <a class="btn btn-primary btn-lg" role="button">Learn more</a>
+          <% end %>
+        <% elsif current_user == @user && @user.circles.any? %>
+            <h2>Your Circle:</h2>
+            <% @user.circles.each_with_index do |c, index| %>                 
+              <% c.users.each do |user| %> 
                   <div class="row">
                     <div class="col-sm-6 col-md-4">
                       <div class="thumbnail">
-                        <img><%= image_tag @user.photo.url(:thumb) %></img>
+                        <% if @user.photo_file_name %>
+                          <img><%= image_tag @user.photo.url(:thumb) %></img>
+                        <% end %>
                           <div class="caption">
                           <h3><%= user.name %> - 
                             <% if user.id == current_user.id %>
@@ -98,8 +104,6 @@
                       </div>
                      </div>
                     </div>
-                
-               
                 <% end %>
               </div>
                 <% if c.apartment %>
@@ -112,16 +116,6 @@
             <% end %>
             
             <br><br>
-            
-        <!-- user_membership_path(current_user, current_user.memberships) -->
-        <% elsif current_user.landlord && current_user == @user %>
-           <h1>Welcome to Roomiez!</h1>
-          <p>
-            As a landlord, Roomiez allows you to efficiently manage all of your apartments on a single platform. Seemlessly toggle through your various circles to collect rent payment online, manage maintenance requests, and easily interact with your tenants.
-          </p>
-          <a class="btn btn-primary btn-lg" role="button">Learn more</a>
-        <% end %>
-
       </div>
     </div>
   </body>
