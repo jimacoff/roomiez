@@ -1,7 +1,7 @@
 <div class="allpagebackground">
   <nav class="navbar navbar-default" role="navigation">
    <div class="navbar-header">
-        <img class="navbar-brand" src="/assets/thumblogo.png" id = "rommiez_logo">
+        <img class="navbar-brand" src="/assets/roomiezlogo1.png" id = "rommiez_logo">
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         
@@ -65,13 +65,13 @@
         <% @users.each do |u| %>
         <% if u.landlord == false && u != current_user %>
         <tr>
-          <td> Picture!
+          <td> <%= image_tag u.photo.url(:thumb) %>
           </td>
           <td><%= link_to u.name, "users/#{u.id}" %></td>
           <!-- Button trigger modal -->
           <td
             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
-            View <%= u.name %> profile
+            View Profile
             </button>
           </td>
         </tr>
@@ -82,11 +82,11 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> Profile</strong> </h3>
+                <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> </strong> </h3>
               </div>
               <div class="modal-body">
                 <% if u.photo_file_name %>
-                  <h4> Photo : <%= image_tag u.photo.url(:medium) %> </h4>
+                  <h4> <%= image_tag u.photo.url(:medium) %> </h4>
                 <% end %>
                 <h4> Email : <%= u.email %> </h4>
                 <h4> Age : <%= u.age %> </h4>
@@ -94,7 +94,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <%= link_to "Add #{u.name}'s circle to your circle!", circles_add_path(:user_to_add => u.id) %>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><%= link_to "Add #{u.name}'s circle to your circle!", circles_add_path(:user_to_add => u.id) %> </button>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
       </table>
     </div>
     <div class="tab-pane" id="landlord">
-      <table class="table table-hover">
+      <table class="table">
         <thead>
           <tr>
             <th>Picture</th>
@@ -116,13 +116,13 @@
           <% @users.each do |u| %>
           <% if u.landlord == true && u != current_user %>
           <tr>
-            <td> Picture!
+            <td> <%= image_tag u.photo.url(:thumb) %>
             </td>
             <td><%= link_to u.name, "users/#{u.id}" %></td>
             <!-- Button trigger modal -->
             <td
               <button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
-              View <%= u.name %> profile
+              View Profile
               </button>
             </td>
           </tr>
@@ -132,7 +132,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> Profile</strong> </h3>
+                  <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> </strong> </h3>
                 </div>
                 <div class="modal-body">
                   <h4> Email : <%= u.email %> </h4>
