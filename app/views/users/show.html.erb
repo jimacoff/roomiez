@@ -6,8 +6,15 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         
         <ul class="nav navbar-nav navbar-right">
-            <li><h4>&nbsp Welcome, <%= current_user.name %> </h4></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          <li><h4> <%= link_to "Welcome #{current_user.name}", user_path(current_user) %> </h4></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Edit Profile', edit_user_registration_path(current_user)%></li>
+                <li class="divider"></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+              </ul>     
+            </li>
           
         </ul>
         <!-- Nav bar if landlord and current_user -->
@@ -57,6 +64,7 @@
               Roomiez allows you to find and connect with roommates looking to live in the same location. Once you have joined a circle together, you and your roommate can embark on the apartment hunt together, ensuring that you live where you want, with the people you want to live with! Select "Find Roommates" to get started. 
             </p>
             <a class="btn btn-primary btn-lg" role="button" href="/users">Find Roommates</a>
+
             <% elsif @user.circles.any? %>
               <h2>Your circle:</h2>
               <% @user.circles.each_with_index do |c, index| %>                 
@@ -67,10 +75,21 @@
                   <%= c.apartment.name %>
                   <%= link_to "Remove apartment", user_apartment_path(current_user, c.apartment, :remove_apt_from_circle => true), :method => :delete %>
                 <% end %>
-
               <%= link_to "Leave circle", membership_path(@memberships[index]), :method => :delete %>
               <% end %>
             <% end %>
+            
+            <br><br>
+            <h3>Your information:</h3>
+            <ul>
+              <% if @user.photo_file_name %>
+                  <li> Photo : <%= image_tag @user.photo.url(:thumb) %> </li>
+              <% end %>
+              <li> Name: <%= @user.name %></li>
+              <li> Email: <%= @user.email %></li>
+              <li> Age: <%= @user.age %></li>
+            </ul>
+
         <% elsif !current_user.landlord && current_user != @user %>
         <ul>
           <li><%= @user.name %></li>
@@ -85,6 +104,7 @@
           </p>
           <a class="btn btn-primary btn-lg" role="button">Learn more</a>
         <% end %>
+
       </div>
     </div>
   </body>

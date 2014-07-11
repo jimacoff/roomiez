@@ -9,7 +9,14 @@
       
       <ul class="nav navbar-nav navbar-right">
          <li><h4>&nbsp Welcome, <%= current_user.name %> </h4></li>
-        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+         <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Edit Profile', edit_user_path(current_user)%></li>
+                <li class="divider"></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+              </ul>     
+            </li>
       </ul>
 
       <ul class="nav navbar-nav" id="myScrollspy" >
