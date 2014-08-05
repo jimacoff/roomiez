@@ -16,7 +16,7 @@ group :development do
   gem 'puma'
 end
 
-# gem 'pg', group: :production
+gem 'pg', group: :production
 
 
 gem 'pry'
