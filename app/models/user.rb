@@ -1,13 +1,11 @@
 class User < ActiveRecord::Base
 	has_many :apartments
 	has_many :tasks, through: :apartments 
-	#has_many :tasks, :foreign_key => :user_id
-	#do we need to add column of :creator_user_id and :user_id for :tasks
-
 	has_many :memberships, :dependent => :destroy
 	has_many :circles, through: :memberships
-
 	has_many :messages
+
+	validates :name, presence: true
 
 	#Does stuff that has to do with photo upload
 	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/face.jpeg"
@@ -16,7 +14,7 @@ class User < ActiveRecord::Base
 	
 
 	def self.filter(query)
-    	query.blank? ? User.all : User.where("name LIKE '%#{query}%' OR email LIKE '%#{query}%'")
+	  query.blank? ? User.all : User.where("name LIKE '%#{query}%' OR email LIKE '%#{query}%'")
 	end
 
   # Include default devise modules. Others available are:
