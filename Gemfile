@@ -19,7 +19,6 @@ end
 gem 'pg', group: :production
 
 
-gem 'pry'
 gem 'bootstrap-sass' 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -59,3 +58,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'pry'
+end
