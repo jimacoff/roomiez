@@ -9,13 +9,6 @@ gem 'rails_12factor', group: :production
 
 
 
-group :development do
-  # gem 'jazz_hands'
-  #gem 'better_errors'
-  gem 'quiet_assets'
-  gem 'puma'
-end
-
 gem 'pg', group: :production
 
 
@@ -58,7 +51,16 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'pry'
+group :development do
+  gem 'quiet_assets'
+  gem 'puma'
 end
+
+group :development, :test do
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+end
+
+gem 'simplecov', :require => false, :group => :test
