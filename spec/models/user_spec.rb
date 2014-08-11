@@ -7,6 +7,7 @@ describe User do
   it { should have_many(:memberships).dependent(:destroy) }
   it { should have_many(:circles).through(:memberships) }
   it { should have_many(:messages) }
+  it { should have_many(:reviews) }
 
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }
