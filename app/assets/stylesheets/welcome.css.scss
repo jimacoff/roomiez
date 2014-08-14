@@ -5,93 +5,92 @@
 /*******************ALL PAGES*************************/
 
 #facepic {
-	height: 30%;
-	width:20%;
+  height: 30%;
+  width:20%;
 }
 
 a {
-	color:white;
+  color:white;
 }
 
 .allpagebackground {
-	background-color:#E1E1E1;
-	border-radius:10px;
+  background-color:#E1E1E1;
+  border-radius:10px;
 }
 
 ul {
-	list-style:none;
+  list-style:none;
 }
 
 p.alert {
-	padding: 0 0px;
-	margin-bottom: 0px;
+  padding: 0 0px;
+  margin-bottom: 0px;
 }
 
 p.notice {
-	padding: 0 0px;
-	margin-bottom: 0px;
+  padding: 0 0px;
+  margin-bottom: 0px;
 }
 
 /*******************WELCOME PAGE NAVBAR*************************/
 
 li #messageshover:hover {
-	background-color:#C2E066;
-
+  background-color:#C2E066;
 }
 
 .navbar {
-margin-top:5px;
+  margin-top:5px;
 }
+
 li.currentpage {
-	background-color:#C2E066;
+  background-color:#C2E066;
 }
 
 
 .navbar-header li {
-	list-style: none;
+  list-style: none;
 
 }
 
 .navbar-brand {
-	height: 70px;
-	width: 200px; 
-
+  height: 70px;
+  width: 200px; 
 }
 
 .navbar-nav > li:hover {
-	background-color: #bfea66;
+  background-color: #bfea66;
 }
 
 #roomiez_logo {
-	height: 50px;
-	padding: 0;
-	width: 140px;
+  height: 50px;
+  padding: 0;
+  width: 140px;
 }
 
 
 /******************* apartment view *************************/
 
 #apartmentshow {
-	padding-top:0.2px;
-	padding-left:1%;
-	background-color: white;
-	border-radius:10px;
-	padding-bottom:0.2px;
-	margin-top:1.5%;
+  padding-top:0.2px;
+  padding-left:1%;
+  background-color: white;
+  border-radius:10px;
+  padding-bottom:0.2px;
+  margin-top:1.5%;
 }
 /******************* BODY *************************/
 
 
 body.pagebodybackground {
-	position: relative;
-	background-image: url('apartmenttest.jpg');
-	opacity: 30%;
-	font-size: 17px;
-	margin-bottom:1.5%;
+  position: relative;
+  background-image: url('apartmenttest.jpg');
+  opacity: 30%;
+  font-size: 17px;
+  margin-bottom:1.5%;
 }
 
 h4 {
-	padding-top:5px;
+  padding-top:5px;
 }
 
 
@@ -100,6 +99,7 @@ h4 {
 .carousel .item {
   height: 500px;
 }
+
 .carousel img {
   position: absolute;
   top: 0;
@@ -107,83 +107,78 @@ h4 {
   min-width: 100%;
   height: 500px;
 }
+
 .carousel-caption {
-	top: 30%;
-	font-family: 'Lato', sans-serif;
-	font-size: 3em;
-	
-	}
+  top: 30%;
+  font-family: 'Lato', sans-serif;
+  font-size: 3em;
+}
 
 /******************* WELCOME - ABOUT SECTION *************************/
 
 #black_text {
-	color:black;
+  color:black;
 }
 
 h1 {
-	font-family: 'Lato', sans-serif;
-	font-size: 1.3em;
-	color: gray;
-	padding-top:5px;
-
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3em;
+  color: gray;
+  padding-top:5px;
 }
 
 p {
-	line-height: 55px;
-	padding-left: 10%;
-	padding-right:10%;
-	padding-top: 1%;
-	font-family: 'Lato', sans-serif;
-	font-size: 2em;
-	color: gray;
-	text-align:center;
-
+  line-height: 55px;
+  padding-left: 10%;
+  padding-right:10%;
+  padding-top: 1%;
+  font-family: 'Lato', sans-serif;
+  font-size: 2em;
+  color: gray;
+  text-align:center;
 }
 
 /******************* TABLES *************************/
 
 #directiontext {
-	font-family: 'Lato', sans-serif;
-	padding-left:0;
-	font-size: 1.4em;
-	text-align:left;
-	padding-top:0;
-	line-height:0;
+  font-family: 'Lato', sans-serif;
+  padding-left:0;
+  font-size: 1.4em;
+  text-align:left;
+  padding-top:0;
+  line-height:0;
 }
 
 table {
-	font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 /******************* WELCOME - FOUNDERS SECTION *************************/
 
 #thefounders {
-			background-image: url("/assets/sky.jpg");
+  background-image: url("/assets/sky.jpg");
 
 }
 
 #green_text {
-	color: #B2C248;
+  color: #B2C248;
 }
 
 #sabrapic {
-
-
-	float:left;
-	height:170px;
-	width:150px;
-	border-radius:100%;
+  float:left;
+  height:170px;
+  width:150px;
+  border-radius:100%;
 }
 
 #sabraprofile {
-
-	float:left;
-	width:50%;
+  float:left;
+  width:50%;
 }
 
 #germanprofile {
-	float:right;
-	width:50%;
+  float:right;
+  width:50%;
 }
 
 
@@ -191,32 +186,31 @@ table {
 
 
 #form_style input {
-width:30%;
+  width:30%;
   border-radius: 7px;
 }
 
 #submitbutton input {
-background-color: #FFCC02;
-width: 150px;
-border-radius: 20px;
+  background-color: #FFCC02;
+  width: 150px;
+  border-radius: 20px;
 }
 
 #submitbutton input:hover {
-background-color: #ccc;
+  background-color: #ccc;
 }
 
 #apartmentpage {
-	background-image: url("apartment2.jpg");
-	margin-top: 1%;
-	font-family: 'Lato', sans-serif;
+  background-image: url("apartment2.jpg");
+  margin-top: 1%;
+  font-family: 'Lato', sans-serif;
 }
 
 #signinpage {
-	background-image: url("friends.jpg");
-	background-repeat: fill;
-	margin-top: 1%;
-	font-family: 'Lato', sans-serif;
-
+  background-image: url("friends.jpg");
+  background-repeat: fill;
+  margin-top: 1%;
+  font-family: 'Lato', sans-serif;
 }
 
 .border-form-div {
@@ -225,14 +219,11 @@ background-color: #ccc;
   margin: 0 auto 20px;
   background-color: #fff;
   border-radius: 50px;
-  
   box-shadow: 0 10px 10px rgba(0,0,0,.05);
-
 }
 
 
  /******************* Footer  *************************/
-
 footer p {
   padding-top: 0;
   padding-bottom: 0;
