@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   resources :apartments, :circles
 
 
+  get 'contact', to: 'welcome#contact', as: :contact
+  get 'about', to: 'welcome#about', as: :about
 
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   root 'welcome#home'
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

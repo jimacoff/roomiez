@@ -1,93 +1,77 @@
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <img class="navbar-brand" src="assets/roomiezlogo1.png" id = "rommiez_logo">
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            
-            <ul class="nav navbar-nav" id="myScrollspy" >
-                <li><a href="#home">Home</a> </li>
-                <li> <a href="#about">About</a> </li>
-                <li><a href="#thefounders"> The Founders</a></li>
-                <li><a href="#">Contact Us</a></li>
-                
-            </ul>
-            
-            <ul class="nav navbar-nav navbar-right">
-                <li> <%= link_to "Sign up", new_registration_path("user") %></li>
-                <li> <%= link_to "Login", new_session_path("user") %> </li>
-                
-            </ul>
-        </li>
+<div class="container-fluid">
+  <div class="navbar-header">
+    <img class="navbar-brand" src="assets/roomiezlogo1.png" id = "rommiez_logo">
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
+    <ul class="nav navbar-nav" id="myScrollspy" >
+      <li><a href="#home">Home</a> </li>
+      <li><a href="#mission">Our Mission</a> </li>
+      <li><a href="about">About Us</a></li>
+      <li><a href="contact">Contact</a></li>
     </ul>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+
+    <ul class="nav navbar-nav navbar-right">
+      <li> <%= link_to "Sign up", new_registration_path("user") %></li>
+      <li> <%= link_to "Login", new_session_path("user") %> </li>        
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
 </nav>
+
 <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->
 <body data-spy="scroll" data-target="#myScrollspy" id="welcomepagebackground">
-    <div id= "home" role="tablist">
-        <!-- HOME -->  <!-- HOME -->   <!-- HOME -->
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="../../assets/friends.jpg" alt="friends">
-                    <div class="carousel-caption">
-                        Find Roommates
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="../../assets/apartment.jpg" alt="apartment">
-                    <div class="carousel-caption">
-                        Find an Apartment
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="../../assets/landlord.jpg" alt="apartment">
-                    <div class="carousel-caption">
-                        Connect with your Landlord
-                    </div>
-                </div>
-            </div>
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-        </div>
-        
-    </div>
-    <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->
-    <div id= "about" role="tablist">
-        <p> <strong id="black_text"> Roomi</strong><strong id="green_text">ez</strong> </strong> is an online platform that allows  <strong> tenants </strong> to <strong id="green_text"> find </strong> and  <strong id="green_text"> connect </strong> with current and potential roommates and landlords. Whether you're looking to find a new apartment with friends, or looking to find some new roommates to split the rent on your current apartment, Roomiez provides all the necessary resources to help you live where you want, with the people you want to live with. </p>
-    </div>
-    <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->
-    <div id= "thefounders" role="tablist">
-        <div id="sabraprofile">
-            <img src="assets/headshot.jpg" id="sabrapic">
-            <h1> <strong>Sabra <strong id="green_text">Meretab </strong></strong>  </h1> <br>
-            <p> is Junior at Stanford University majoring in Economics. She got the idea for Roomiez while attending a coding school called iXperience located in Cape Town, South Africa. </p>
-        </div>
-        <div id="germanprofile">
-            <img src="assets/germanpicture.jpg" id="sabrapic">
-            <h1> <strong>German <strong id="green_text">Os </strong></strong> </h1> <br>
-            <p>is a Senior at the Univeristy of Michigan. He has a lot of swagger and is absolutely obsessed with Costa Rica.</p>
-        </div>
+  <div id= "home" role="tablist">
+    <!-- HOME -->  <!-- HOME -->   <!-- HOME -->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+	<div class="item active">
+	  <img src="../../assets/friends.jpg" alt="friends">
+	  <div class="carousel-caption">
+	    Find Roommates
+	  </div>
+	</div>
+	<div class="item">
+	  <img src="../../assets/apartment.jpg" alt="apartment">
+	  <div class="carousel-caption">
+	    Find an Apartment
+	  </div>
+	</div>
+	<div class="item">
+	  <img src="../../assets/landlord.jpg" alt="apartment">
+	  <div class="carousel-caption">
+	    Connect with your Landlord
+	  </div>
+	</div>
       </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+	<span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+	<span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
-      <footer>
-	<p>Sabra Meretab and German Ostaszynski</p>
-	<p>Copyright 2014</p>
-      </footer>
+  </div>
+  <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->  <!--- FANCY SCRHOLL -->
+  <div id= "mission" role="tablist">
+    <p> <strong id="black_text"> Roomi</strong><strong id="green_text">ez</strong> </strong> is an online platform that allows  <strong> tenants </strong> to <strong id="green_text"> find </strong> and  <strong id="green_text"> connect </strong> with current and potential roommates and landlords. Whether you're looking to find a new apartment with friends, or looking to find some new roommates to split the rent on your current apartment, Roomiez provides all the necessary resources to help you live where you want, with the people you want to live with. 
+    </p>
+</div>
 
-</body>
-<!-- CAROUSEL -->  <!-- CAROUSEL -->   <!-- CAROUSEL -->
+
+<div id="footer">
+  <p>Sabra Meretab and German Ostaszynski</p>
+  <p>Copyright 2014</p>
+</div>
+
+  </body>
+  <!-- CAROUSEL -->  <!-- CAROUSEL -->   <!-- CAROUSEL -->
