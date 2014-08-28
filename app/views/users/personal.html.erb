@@ -63,8 +63,10 @@
         <li>  <img src="/assets/face.jpeg" id="facepic"></li>
       <% end %>
       <li><%="Name:  #{current_user.name}"%></li>
+      <li><%="Age: #{current_user.age}"%></li>
       <li><%="Email: #{current_user.email}"%></li>
       <li><%="About me: #{current_user.about}"%></li>
+      <li><%= link_to 'Edit profile', edit_user_registration_path(current_user)%></li>
     </ul>
   </div>
 </div>
