@@ -1,0 +1,70 @@
+<div class="allpagebackground">
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <img class="navbar-brand" src="/assets/roomiezlogo1.png" id = "rommiez_logo">
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><h4> <%= link_to "Welcome #{current_user.name}", user_path(current_user) %> </h4></li>
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+	<li><%= link_to 'Edit Profile', edit_user_registration_path(current_user)%></li>
+	<li class="divider"></li>
+	<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+      </ul>     
+      </li>
+
+    </ul>
+    <!-- Nav bar if landlord and current_user -->
+    <ul class="nav navbar-nav" id="myScrollspy" >
+      <% if current_user.landlord %>
+	<li class="currentpage"><%= link_to 'Home', user_path(current_user)%></li>
+	<li> <%= link_to 'My Apartments', user_apartments_path(current_user)%></li>
+	<li> <%= link_to 'Add Apartment', new_apartment_path %> </li>
+
+	<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+	<ul class="dropdown-menu" role="menu">
+	  <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
+	  <li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
+	  <li class="divider"></li>
+	  <li><a href="#">Trash</a></li>
+	</ul>     
+	</li>
+
+	<!-- Nav bar for tenant and curernt_user -->
+      <% elsif !current_user.landlord %>
+	<li> <%= link_to 'Home', user_path(current_user)%></li>
+	<li><%= link_to "Find Roommates", users_path%></li>
+	<li><%= link_to "Find Apartments", apartments_path%></li>
+
+	<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+	<ul class="dropdown-menu" role="menu">
+	  <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
+	  <li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
+	  <li class="divider"></li>
+	  <li><a href="#">Trash</a></li>
+	</ul>     
+	</li>
+      <% end %>
+    </ul>
+  </div><!-- /.navbar-collapse -->  
+  </nav>
+
+  <div id="personal-info">
+    <h3>Personal profile </h3>
+    <ul>
+      <% if current_user.photo_file_name %>
+        <li><%= image_tag current_user.photo.url(:medium) %></li>
+      <% else %>
+        <li>  <img src="/assets/face.jpeg" id="facepic"></li>
+      <% end %>
+      <li><%="Name:  #{current_user.name}"%></li>
+      <li><%="Email: #{current_user.email}"%></li>
+      <li><%="About me: #{current_user.about}"%></li>
+    </ul>
+  </div>
+</div>
