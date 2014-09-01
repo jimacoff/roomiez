@@ -4,25 +4,16 @@
   <%= devise_error_messages! %>
 
   <div class="form-group"><%= f.label :name %><br>
-  <%= f.text_field :name, autofocus: true %></div>
+    <%= f.text_field :name, autofocus: true %></div>
 
   <div class="form-group"><%= f.label :age %><br>
-  <%= f.text_field :age %></div> 
+    <%= f.text_field :age %></div> 
 
   <div class="form-group"><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <%= f.email_field :email %></div>
 
-  <div class="form-group"><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div class="form-group"><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
- <div class="form-group"><%= f.label :about, "Briefly describe yourself :" %><br>
-  <%= f.text_field :about%></div>
-
-   <div class="form-group"><%= f.label :landlord, "Please select if you are a landlord:" %>
-  <%= f.check_box :landlord %></div>
+  <div class="form-group"><%= f.label :about, "Briefly describe yourself :" %><br>
+    <%= f.text_field :about%></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -37,6 +28,15 @@
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
+
+
+  <div>
+    <%= f.label "Upload a Photo : " %><br/>
+    <%= f.file_field :photo %> <br/>
+  </div>
+
+  <div><%= f.label :landlord, "Please select if you are a landlord:" %>
+    <%= f.check_box :landlord %></div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>

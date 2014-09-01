@@ -1,2 +1,47 @@
-<h1>Welcome#about</h1>
-<p>Find me in app/views/welcome/about.html.erb</p>
+<nav class="navbar navbar-default" role="navigation">
+<div class="container-fluid">
+  <div class="navbar-header">
+    <img class="navbar-brand" src="assets/roomiezlogo1.png" id = "rommiez_logo">
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">        
+    <ul class="nav navbar-nav" id="myScrollspy" >
+      <li><a href="/">Home</a> </li>
+      <li><a href="/#mission">Our Mission</a> </li>
+      <li><a href="about">About Us</a></li>
+      <li><a href="contact">Contact</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li> <%= link_to "Sign up", new_registration_path("user") %></li>
+      <li> <%= link_to "Login", new_session_path("user") %> </li>        
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+
+<body>
+  <div role="tablist">
+
+
+    <div id="sabraprofile">
+      <img src="assets/sabrapicture.jpg" id="founder_pic">
+      <h1> <strong>Sabra <strong id="green_text">Meretab </strong></strong>  </h1> <br>
+      <p> is Junior at Stanford University majoring in Economics. She got the idea for Roomiez while attending a coding school called iXperience located in Cape Town, South Africa. </p>
+    </div>
+    <div id="germanprofile">
+      <img src="assets/germanpicture.jpg" id="founder_pic">
+      <h1> <strong>German <strong id="green_text">Ostaszynski </strong></strong> </h1> <br>
+      <p>is a Senior at the Univeristy of Michigan majoring in Informatics. After graduation German wants to pursue a career as a web developer to help solve problems in our everyday life.</p>
+    </div>
+  </div>
+</div>
+
+<div id="footer">
+  <p>Sabra Meretab and German Ostaszynski</p>
+  <p>Copyright 2014</p>
+</div>
+
+
+
+</body>
