@@ -4,7 +4,9 @@ Roomiez is a social networking app that allows users to find roommates and apart
 
 ## Getting Started
 
-The current version of Roomiez is under development. We are currently working to improve the app and to realease it online.
+To chekout or project visit ezroomie.herokuapp.com
+
+The current version of Roomiez is under development, we are currently working to improve the app.
 
 ## Founders
 
