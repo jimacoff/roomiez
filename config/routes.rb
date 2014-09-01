@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'circles/add' => 'circles#add'
 
+  get 'users/:user_id/personal' => 'users#personal', as: :personal
+
   resources :apartments, :circles
 
 
