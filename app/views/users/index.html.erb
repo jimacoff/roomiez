@@ -1,163 +1,163 @@
 <div class="allpagebackground">
   <nav class="navbar navbar-default" role="navigation">
-   <div class="navbar-header">
-        <img class="navbar-brand" src="/assets/roomiezlogo1.png" id = "rommiez_logo">
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        
-        <ul class="nav navbar-nav navbar-right">
-            <li><h4> <%= link_to "Welcome #{current_user.name}", user_path(current_user) %> </h4></li>
-           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><%= link_to 'Edit Profile', edit_user_registration_path(current_user)%></li>
-                <li class="divider"></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-              </ul>     
-            </li>
-         
-        </ul>
-        <ul class="nav navbar-nav" id="myScrollspy" >
-              <li> <%= link_to 'Home', user_path(current_user)%></li>
-              <li class="currentpage"><%= link_to "Find Roommates", users_path%></li>
-              <li><%= link_to "Find Apartments", apartments_path%></li>
-                            
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
-                <li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
-                <li class="divider"></li>
-                <li><a href="#">Trash</a></li>
-              </ul>     
-            </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
+  <div class="navbar-header">
+    <img class="navbar-brand" src="/assets/roomiezlogo1.png" id = "rommiez_logo">
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><h4> <%= link_to "Welcome #{current_user.name}", user_path(current_user) %> </h4></li>
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+	<li><%= link_to 'Edit Profile', edit_user_registration_path(current_user)%></li>
+	<li class="divider"></li>
+	<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+      </ul>     
+      </li>
+
+    </ul>
+    <ul class="nav navbar-nav" id="myScrollspy" >
+      <li> <%= link_to 'Home', user_path(current_user)%></li>
+      <li class="currentpage"><%= link_to "Find Roommates", users_path%></li>
+      <li><%= link_to "Find Apartments", apartments_path%></li>
+
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+	<li><%= link_to 'Inbox', user_messages_path(current_user)%></li>
+	<li><%= link_to 'Create Message', new_user_message_path(current_user)%></li>
+	<li class="divider"></li>
+	<li><a href="#">Trash</a></li>
+      </ul>     
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
 
   </nav>
 </div>
 
 <body class="pagebodybackground">
-<div id="inboxbackground">
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li class="active"><a href="#tenant" role="tab" data-toggle="tab">Roomiez</a></li>
-  <li><a href="#landlord" role="tab" data-toggle="tab">Landlords</a></li>
-  <br>
-  <%= form_tag users_path, :method => 'GET' do %>
-  <%= text_field_tag 'q', params[:q] %>
-  <%= submit_tag 'SEARCH' %>
-  <% end %><br>
-</ul>
-<!-- Tab panes -->
+  <div id="inboxbackground">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#tenant" role="tab" data-toggle="tab">Roomiez</a></li>
+      <li><a href="#landlord" role="tab" data-toggle="tab">Landlords</a></li>
+      <br>
+      <%= form_tag users_path, :method => 'GET' do %>
+	<%= text_field_tag 'q', params[:q] %>
+	<%= submit_tag 'SEARCH' %>
+      <% end %><br>
+    </ul>
+    <!-- Tab panes -->
 
-<div class="tab-content">
-  <div class="tab-pane active" id="tenant">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Picture</th>
-          <th>Name</th>
-          <th>Profile</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |u| %>
-        
-        <% if u.landlord == false && u != current_user && 
-          (u.circles.empty? || !u.circles.first.users.include?(current_user)) %>
-        <tr>
-          <% if u.photo_file_name %>
-            <td> <%= image_tag u.photo.url(:thumb) %> </td>
-          <% else %>
-            <td>  <img src="/assets/face.jpeg" id="facepic"></td>
-          <% end %>
-          <td><%= link_to u.name, "users/#{u.id}" %></td>
-          <!-- Button trigger modal -->
-          <td
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
-            View Profile
-            </button>
-          </td>
-        </tr>
-        
-        <!-- Modal -->
-        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> </strong> </h3>
-              </div>
-              <div class="modal-body">
-                <% if u.photo_file_name %>
-                  <h4> <%= image_tag u.photo.url(:medium) %> </h4>
-                <% end %>
-                <h4> Email : <%= u.email %> </h4>
-                <h4> Age : <%= u.age %> </h4>
-                <h4> About : <%= u.about %> </h4>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <%= link_to "Add #{u.name}'s circle to your circle!", circles_add_path(:user_to_add => u.id), :class => "btn btn-default" %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% end %>
-        <% end %>
-      </table>
-    </div>
-    <div class="tab-pane" id="landlord">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Picture</th>
-            <th>Name</th>
-            <th>Profile</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |u| %>
-          <% if u.landlord == true && u != current_user %>
-          <tr>
-            <% if u.photo_file_name %>
-              <td> <%= image_tag u.photo.url(:thumb) %> </td>
-            <% else %>
-              <td>  <img src="/assets/face.jpeg" id="facepic"></td>
-            <% end %>
-            <td><%= link_to u.name, "users/#{u.id}" %></td>
-            <!-- Button trigger modal -->
-            <td
-              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
-              View Profile
-              </button>
-            </td>
-          </tr>
-          <!-- Modal -->
-          <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> </strong> </h3>
-                </div>
-                <div class="modal-body">
-                  <h4> Email : <%= u.email %> </h4>
-                  <h4> Age : <%= u.age %> </h4>
-                  <h4> About : <%= u.about %> </h4>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Add landlord!</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% end %>
-          <% end %>
-        </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tenant">
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th>Picture</th>
+	      <th>Name</th>
+	      <th>Profile</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @users.each do |u| %>
+
+	      <% if u.landlord == false && u != current_user && 
+		(u.circles.empty? || !u.circles.first.users.include?(current_user)) %>
+		<tr>
+		  <% if u.photo_file_name %>
+		    <td> <%= image_tag u.photo.url(:thumb) %> </td>
+		  <% else %>
+		    <td>  <img src="/assets/face.jpeg" id="facepic"></td>
+		  <% end %>
+		  <td><%= link_to u.name, "users/#{u.id}" %></td>
+		  <!-- Button trigger modal -->
+		  <td
+		    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
+		      View Profile
+		    </button>
+		  </td>
+		</tr>
+
+		<!-- Modal -->
+		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> </strong> </h3>
+		      </div>
+		      <div class="modal-body">
+			<% if u.photo_file_name %>
+			  <h4> <%= image_tag u.photo.url(:medium) %> </h4>
+			<% end %>
+			<h4> Email : <%= u.email %> </h4>
+			<h4> Age : <%= u.age %> </h4>
+			<h4> About : <%= u.about %> </h4>
+		      </div>
+		      <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<%= link_to "Add #{u.name}'s circle to your circle!", circles_add_path(:user_to_add => u.id), :class => "btn btn-default" %>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	      <% end %>
+	    <% end %>
+	  </table>
+	</div>
+	<div class="tab-pane" id="landlord">
+	  <table class="table">
+	    <thead>
+	      <tr>
+		<th>Picture</th>
+		<th>Name</th>
+		<th>Profile</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <% @users.each do |u| %>
+		<% if u.landlord == true && u != current_user %>
+		  <tr>
+		    <% if u.photo_file_name %>
+		      <td> <%= image_tag u.photo.url(:thumb) %> </td>
+		    <% else %>
+		      <td>  <img src="/assets/face.jpeg" id="facepic"></td>
+		    <% end %>
+		    <td><%= link_to u.name, "users/#{u.id}" %></td>
+		    <!-- Button trigger modal -->
+		    <td
+		      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%= "#myModal_#{u.id}" %> >
+			View Profile
+		      </button>
+		    </td>
+		  </tr>
+		  <!-- Modal -->
+		  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id=<%="myModal_#{u.id}"%>>
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			  <h3 class="modal-title" id="myModalLabel"> <strong><%= u.name %> </strong> </h3>
+			</div>
+			<div class="modal-body">
+			  <h4> Email : <%= u.email %> </h4>
+			  <h4> Age : <%= u.age %> </h4>
+			  <h4> About : <%= u.about %> </h4>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary">Add landlord!</button>
+			</div>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
+	      <% end %>
+	    </ul>
+	  </div>
+	</div>
       </div>
-    </div>
-  </div>
-</body>
+    </body>

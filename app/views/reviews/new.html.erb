@@ -1,0 +1,26 @@
+<%binding.pry%>
+<%= form_for :review, url: user_apartment_reviews_path(current_user, @apartment) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+	<% @review.errors.full_messages.each do |message| %>
+	  <li><%= message %></li>
+	<% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :rating %><br/>
+  <%= f.text_field :rating %>
+
+  <br/><br/>
+
+  <%= f.label :body %><br/>
+  <%= f.text_field :body %>
+
+  <br/><br/>
+
+  <%= f.submit %>
+<% end %>

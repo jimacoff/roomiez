@@ -2,9 +2,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.filter(params[:q])
-    # @users.each do |user|
-
-    # end
   end
 
 

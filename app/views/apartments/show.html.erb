@@ -1,56 +1,62 @@
 <body class="pagebodybackground">
-<div id="apartmentshow">
+  <div id="apartmentshow">
 
-<h1> <%= @apartment.name %> </h1>
-<% if !current_user.landlord %>
-<%= link_to "Add apartment to circle", user_apartment_path(current_user, @apartment, :add_to_circle => true), method: 'put' %>
-<% end %>
-<div>
-	<%= image_tag @apartment.photo.url(:medium) %>
-</div>
-<br>
-	<ul>
-		<li><%= @apartment.rent %></li>
-		<li><%= @apartment.street_address %></li>
-		<li><%= @apartment.city %></li>
-		<li><%= @apartment.state %></li>
-		<li><%= @apartment.country %></li>
-		<li><%= @apartment.zipcode %></li>
-		<br>
-		<li><%= @apartment.bedrooms %></li>
-		<li><%= @apartment.bathrooms %></li>
-		<br>
-		<li> For more information contact : 
-			 <% owner = User.find(@apartment.user_id) %>
-              <%= owner.name %> </li>
-		<li>
-			<% if @apartment.occupied %>
-			The apartment is currently occupied.
-			<% else %>
-			The apartment is currently available.
-			<% end %>
-		</li>
-		<li>
-		<% if @apartment.smoking %>
-                Smoking Allowed : Yes
-              <% else %>
-                Smoking Allowed : No
-              <% end %>
-          </li>
-          <li>
-              <% if @apartment.pets %>
-                Pets Allowed : Yes
-              <% else %>
-                Pets Allowed : No
-              <% end %>
-          </li>
-	</ul>
+    <h1> <%= @apartment.name %> </h1>
+    <% if !current_user.landlord %>
+      <%= link_to "Add apartment to circle", user_apartment_path(current_user, @apartment, :add_to_circle => true), method: 'put' %>
+    <% end %>
+    <div>
+      <%= image_tag @apartment.photo.url(:medium) %>
+    </div>
+    <br>
+    <ul>
+      <li><%= @apartment.rent %></li>
+      <li><%= @apartment.street_address %></li>
+      <li><%= @apartment.city %></li>
+      <li><%= @apartment.state %></li>
+      <li><%= @apartment.country %></li>
+      <li><%= @apartment.zipcode %></li>
+      <br>
+      <li><%= @apartment.bedrooms %></li>
+      <li><%= @apartment.bathrooms %></li>
+      <br>
+      <li> For more information contact : 
+      <% owner = User.find(@apartment.user_id) %>
+      <%= owner.name %> </li>
+      <li>
+      <% if @apartment.occupied %>
+	The apartment is currently occupied.
+      <% else %>
+	The apartment is currently available.
+      <% end %>
+      </li>
+      <li>
+      <% if @apartment.smoking %>
+	Smoking Allowed : Yes
+      <% else %>
+	Smoking Allowed : No
+      <% end %>
+      </li>
+      <li>
+      <% if @apartment.pets %>
+	Pets Allowed : Yes
+      <% else %>
+	Pets Allowed : No
+      <% end %>
+      </li>
+    </ul>
 
-<% if current_user.landlord %>
-	<%= link_to "Edit", edit_user_apartment_path(current_user, @apartment) %>
-	<%= link_to "Delete", "/users/#{current_user.id}/apartments/#{@apartment.id}", method: 'delete' %>
-	<% end %>
-<br>
-<%= link_to 'Back', apartments_path %>
-</div>
+    <% if current_user.landlord %>
+      <%= link_to "Edit", edit_user_apartment_path(current_user, @apartment) %>
+      <%= link_to "Delete", "/users/#{current_user.id}/apartments/#{@apartment.id}", method: 'delete' %>
+    <% end %>
+    <br>
+  </div>
+  
+  <div class="reviews">
+    <%= link_to "Review this apartment!", new_user_apartment_review_path(current_user, @apartment) %>
+
+  </div>
+
+  <%= link_to 'Back', apartments_path %>
 </body>
