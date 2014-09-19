@@ -1,5 +1,4 @@
-<%binding.pry%>
-<%= form_for :review, url: user_apartment_reviews_path(current_user, @apartment) do |f| %>
+<%= form_for :review, url: user_apartment_reviews_path(current_user, params[:apartment_id]) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@review.errors.count, "error") %> prohibited this post from being saved:</h2>

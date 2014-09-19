@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     @review.apartment_id = 1
 
     if @review.save
-      redirect_to user_apartment_path(current_user.id, @apartment)
+      redirect_to user_apartment_path(current_user.id, @review.apartment_id)
     else
       render :new
     end
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
   
   private
     def review_params
-      params.require(:review).permit(:rating, :body)
+      params.require(:review).permit(:rating, :body, :apartment_id)
     end
 
 end 
