@@ -51,23 +51,33 @@
       <%= link_to "Delete", "/users/#{current_user.id}/apartments/#{@apartment.id}", method: 'delete' %>
     <% end %>
     <br>
-  </div>
-  
-  <div class="reviews">
+
     <%= link_to "Review this apartment!", new_user_apartment_review_path(current_user, @apartment) %>
+    <br>
+    <h2> Reviews </h2>
+
+    <table>
+      <thead>
+	<tr>
+	  <th>Rating </th>
+	  <th>Review</th>
+	</tr>
+      </thead>
+      <% Review.all.each do |r| %>
+	<% if r.apartment_id == @apartment.id %>
+
+	  <tbody>
+	    <td><%= r.rating %></td>
+	    <td><%= r.body %></td>
+	  </tbody>
+	<% else %>
+	  <p> There are no reviews of this apartment. </p>  
+	<% end %>
+      <% end %>
+    </table>
+
+    <br>
+    <%= link_to 'Back', apartments_path %>
 
   </div>
-
-
-  <h2> Reviews </h2>
-  <% Review.all.each do |r| %>
-    <% if r.apartment_id == @apartment.id %>
-      <%= r.rating %>
-      <%= r.body %>
-    <% else %>
-      <p> There are no reviews of this apartment. </p>  
-    <% end %>
-  <% end %>
-
-  <%= link_to 'Back', apartments_path %>
 </body>
