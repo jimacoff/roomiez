@@ -65,10 +65,10 @@
       </thead>
       <% Review.all.each do |r| %>
 	<% if r.apartment_id == @apartment.id %>
-
 	  <tbody>
 	    <td><%= r.rating %></td>
 	    <td><%= r.body %></td>
+	    <td><%= link_to "Edit", edit_user_apartment_review_path(current_user, @apartment, r.id) %></td>
 	  </tbody>
 	<% else %>
 	  <p> There are no reviews of this apartment. </p>  
