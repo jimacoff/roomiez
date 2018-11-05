@@ -6,7 +6,3 @@ Roomiez is a social networking app that allows users to find roommates and apart
 
 The current version of Roomiez is under development. We are currently working to improve the app and to realease it online.
 
-## Founders
-
-German Ostaszynski and Sabra Meretab
-
